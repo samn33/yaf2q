@@ -1,0 +1,12 @@
+/target
+old
+backup
+build
+backup
+sandbox
+build
+dist
+TAGS
+__pycache__
+*.egg-info
+.venv
