@@ -156,15 +156,9 @@ Ternary Treeは、一般には各ノードが高々3個の子ノードを持つ�
 
 ![ternary_tree_1](fig/ternary_tree_1.png)
 
-ここで、ノードは楕円で表現されておりノード番号がその中に記載されています。ノードから伸びているエッジは3本であり、各々X,Y,Zというラベルがついています。これは各々パウリX,Y,Z演算子に対応しています。一般的なTernary Treeと違うのは子ノードがないエッジも許されているということです。詳細は[README.md](../../../README.md)に記載されている[参考文献1."From fermions to Qubits: A ZX-Calculus Perspective"](https://arxiv.org/abs/2505.06212)やそれを解説したブログ記事["ZX-calculusを用いたフェルミオン量子ビット変換（１）](https://qiita.com/SamN/items/305a8fe5a6573213ffb8)[（２）](https://qiita.com/SamN/items/4f5c1c8dc3d79c478fc4)[（３）](https://qiita.com/SamN/items/6c9cb250c2b41fa36fec)[（４）](https://qiita.com/SamN/items/3a56984ddef7645968b3)"をご参照いただくとして、ここではごく簡単な最小限の説明をします。
+ここで、ノードは楕円で表現されておりノード番号がその中に記載されています。ノードから伸びているエッジは3本であり、各々X,Y,Zというラベルがついています。これは各々パウリX,Y,Z演算子に対応しています。一般的なTernary Treeと違うのは子ノードがないエッジも許されているということです。詳細は[README.md](../../../README.md)に記載されている参考文献1.["From fermions to Qubits: A ZX-Calculus Perspective"](https://arxiv.org/abs/2505.06212)やそれを解説したブログ記事["ZX-calculusを用いたフェルミオン量子ビット変換（１）](https://qiita.com/SamN/items/305a8fe5a6573213ffb8)[（２）](https://qiita.com/SamN/items/4f5c1c8dc3d79c478fc4)[（３）](https://qiita.com/SamN/items/6c9cb250c2b41fa36fec)[（４）](https://qiita.com/SamN/items/3a56984ddef7645968b3)"をご参照いただくとして、ここでは、とりあえず、このようなTernary Treeによって任意のフェルミオン・量子ビット変換を規定することができて、その変換のアルゴリズムもわかっているということをおさえておけば十分です。
 
-第2量子化を実行した後のフェルミオン演算子（例えば、フェルミオン・ハミルトニアン）は、生成消滅演算子を用いて表現されます。例えば、4個のスピン軌道を持つ電子系の場合、4個の生成演算子と4個の消滅演算子とで表現されます。第2量子化フェルミオン演算子のもう一つの表現の仕方としてマヨラナ演算子を用いた方法もあります。いまあげた例の場合、8個のマヨラナ演算子によってフェルミオン演算子を表すことができます。そして、マヨラナ演算子と生成消滅演算子との間には単純な代数式が成り立っており相互に変換させることができます。
-
-実は、上に示したTernary Treeは4個のスピン軌道からなる電子系に対応したマヨラナ演算子をパウリ積で表現するための木構造になっています。上記Ternary Treeのルートからエッジをたどって末端まで到達するパスを考えてみてください。合計9個のパスがあることがわかります。そのパスを通る途中にX,Y,Zのラベルがついたエッジがあり同時に番号のついたノードも通過します。例えば、一番上のパスは、0-X-1-X-というパスになっています。これはパウリ積$X_{0} X_{1}$を表します。これの一つ下のパスは、0-X-1-Y-2-X-です。これは、パウリ積$X_{0} Y_{1} X_{2}$を表しています。同様に9個のパウリ積をこの木構造から得ることができます。この各々がマヨラナ演算子です。9個あるので1個余分です。どれか一つ、例えば１番下のパスを除外して8個のパウリ積とするのが習慣のようです（と論文には書いてありました）。
-
-パウリ積で表現されたマヨラナ演算子から生成消滅演算子を得るのは簡単な代数式で得られるので、元のフェルミオン演算子に代入することで、パウリ積で表現された量子ビット演算子が得られると思われるかもしれません。原理的にはそういうことなのですが、どのマヨラナ演算子同士をペアにすれば良いかという問題も考慮しないといけないため、単なる代入では済みません（詳細は[Mitchell Chiew, Brent Harrison, Sergii Strelchuk, "Ternary tree transformations are equivalent to linear encodings of the Fock basis", arXiv:2412.07578](https://arxiv.org/abs/2412.07578)をご参照ください）。[README.md](../../../README.md)に記載した[参考文献1.](https://arxiv.org/abs/2505.06212)では、ZX-Calculusを用いた面白い対応規則によってそれを解決しており、yaf2qではそのアルゴリズムを採用しています。
-
-さて、難しい理論説明はこの辺でやめにして、yaf2qでどのようにこのTernary Treeを定義するかを見ていきます。それには、TernaryTreeSpecクラスを使います。そのコンストラクタに、以下のように、indicesとedgesという引数を指定することで、そのインスタンスを生成します。
+さて、それでは、yaf2qでどのようにこのTernary Treeを定義するかを見ていきます。それには、TernaryTreeSpecクラスを使います。そのコンストラクタに、以下のように、indicesとedgesという引数を指定することで、そのインスタンスを生成します。
 
 ```python
 from yaf2q.ternary_tree_spec import TernaryTreeSpec
@@ -239,7 +233,7 @@ fermion_hamiltonian = molecule.get_molecular_hamiltonian()
 num_qubits = fermion_hamiltonian.one_body_tensor.shape[0]
 ```
 
-そして、TernaryTreeSpecのみを引数とした目的関数を以下のように定義します（関数内関数として定義してください）。
+そして、TernaryTreeSpecのみを引数としてfloatを返す目的関数を以下のように定義します（関数内関数として定義してください）。
 
 ```python
 def objective_func(ttspec: TernaryTreeSpec):
