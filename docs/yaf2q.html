@@ -1,0 +1,1294 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>yaf2q package &mdash; yaf2q 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="yaf2q.optimizer package" href="yaf2q.optimizer.html" />
+    <link rel="prev" title="Tutorial(japanese)" href="tutorial_jp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            yaf2q
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_jp.html">Tutorial(japanese)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">yaf2q package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="yaf2q.optimizer.html">yaf2q.optimizer package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-yaf2q.f2q_mapper">yaf2q.f2q_mapper module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper"><code class="docutils literal notranslate"><span class="pre">F2QMapper</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.kind"><code class="docutils literal notranslate"><span class="pre">F2QMapper.kind</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.num_qubits"><code class="docutils literal notranslate"><span class="pre">F2QMapper.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.ttspec"><code class="docutils literal notranslate"><span class="pre">F2QMapper.ttspec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.encoding_matrix"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.encoding_matrix_inv"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix_inv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix_inv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.fermion_to_qubit_operator"><code class="docutils literal notranslate"><span class="pre">F2QMapper.fermion_to_qubit_operator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.fock_to_qubit_state"><code class="docutils literal notranslate"><span class="pre">F2QMapper.fock_to_qubit_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2"><code class="docutils literal notranslate"><span class="pre">F2QMapper.kind</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3"><code class="docutils literal notranslate"><span class="pre">F2QMapper.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.qubit_to_fock_state"><code class="docutils literal notranslate"><span class="pre">F2QMapper.qubit_to_fock_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.f2q_mapper.F2QMapper.to_string"><code class="docutils literal notranslate"><span class="pre">F2QMapper.to_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4"><code class="docutils literal notranslate"><span class="pre">F2QMapper.ttspec</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-yaf2q.qubit_operator_set">yaf2q.qubit_operator_set module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.num_qubits"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.openfermion_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.qiskit_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigenvalues"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigenvalues()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigenvectors"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigenvectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigsh"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigsh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.pauli_weights"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.pauli_weights()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.to_string"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.to_string()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-yaf2q.ternary_tree_spec">yaf2q.ternary_tree_spec module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.num_qubits"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.indices"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.indices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.edges"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec._parent_dict"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec._parent_dict</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec._mask"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec._mask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.change_parent"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.change_parent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.indices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.is_valid"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.random"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.random()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.show"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.show()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.swap_indices"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.swap_indices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.to_string"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.to_string()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-yaf2q">Module contents</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.F2QMapper"><code class="docutils literal notranslate"><span class="pre">F2QMapper</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.kind"><code class="docutils literal notranslate"><span class="pre">F2QMapper.kind</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.num_qubits"><code class="docutils literal notranslate"><span class="pre">F2QMapper.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.ttspec"><code class="docutils literal notranslate"><span class="pre">F2QMapper.ttspec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.encoding_matrix"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.encoding_matrix_inv"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix_inv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix_inv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.fermion_to_qubit_operator"><code class="docutils literal notranslate"><span class="pre">F2QMapper.fermion_to_qubit_operator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.fock_to_qubit_state"><code class="docutils literal notranslate"><span class="pre">F2QMapper.fock_to_qubit_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">F2QMapper.kind</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">F2QMapper.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.qubit_to_fock_state"><code class="docutils literal notranslate"><span class="pre">F2QMapper.qubit_to_fock_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.to_string"><code class="docutils literal notranslate"><span class="pre">F2QMapper.to_string()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">F2QMapper.ttspec</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.QubitOperatorSet"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.num_qubits"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.openfermion_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.qiskit_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.eigenvalues"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigenvalues()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.eigenvectors"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigenvectors()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.eigsh"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigsh()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.pauli_weights"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.pauli_weights()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.to_string"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.TernaryTreeSpec"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.num_qubits"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.indices"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.indices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.edges"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec._parent_dict"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec._parent_dict</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec._mask"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec._mask</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.change_parent"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.change_parent()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.indices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.is_valid"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.is_valid()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.random"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.random()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.show"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.show()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.swap_indices"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.swap_indices()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.to_string"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.to_string()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.yaf2q_encoding_matrix"><code class="docutils literal notranslate"><span class="pre">yaf2q_encoding_matrix()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.yaf2q_encoding_matrix_inv"><code class="docutils literal notranslate"><span class="pre">yaf2q_encoding_matrix_inv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#yaf2q.yaf2q_operator"><code class="docutils literal notranslate"><span class="pre">yaf2q_operator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">yaf2q</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">yaf2q package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/yaf2q.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="yaf2q-package">
+<h1>yaf2q package<a class="headerlink" href="#yaf2q-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="yaf2q.optimizer.html">yaf2q.optimizer package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="yaf2q.optimizer.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="yaf2q.optimizer.html#module-yaf2q.optimizer.sa">yaf2q.optimizer.sa module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SA"><code class="docutils literal notranslate"><span class="pre">SA</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SA.num_qubits"><code class="docutils literal notranslate"><span class="pre">SA.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SA.objective_func"><code class="docutils literal notranslate"><span class="pre">SA.objective_func</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SA.params"><code class="docutils literal notranslate"><span class="pre">SA.params</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SA.verbose"><code class="docutils literal notranslate"><span class="pre">SA.verbose</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SA.optimize"><code class="docutils literal notranslate"><span class="pre">SA.optimize()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SAParams"><code class="docutils literal notranslate"><span class="pre">SAParams</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SAParams.init_sampling"><code class="docutils literal notranslate"><span class="pre">SAParams.init_sampling</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SAParams.num_steps"><code class="docutils literal notranslate"><span class="pre">SAParams.num_steps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SAParams.cooling_factor"><code class="docutils literal notranslate"><span class="pre">SAParams.cooling_factor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#yaf2q.optimizer.sa.SAParams.seed"><code class="docutils literal notranslate"><span class="pre">SAParams.seed</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#id0"><code class="docutils literal notranslate"><span class="pre">SAParams.cooling_factor</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#id1"><code class="docutils literal notranslate"><span class="pre">SAParams.init_sampling</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#id2"><code class="docutils literal notranslate"><span class="pre">SAParams.num_steps</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="yaf2q.optimizer.html#id3"><code class="docutils literal notranslate"><span class="pre">SAParams.seed</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="yaf2q.optimizer.html#module-yaf2q.optimizer">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-yaf2q.f2q_mapper">
+<span id="yaf2q-f2q-mapper-module"></span><h2>yaf2q.f2q_mapper module<a class="headerlink" href="#module-yaf2q.f2q_mapper" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">yaf2q.f2q_mapper.</span></span><span class="sig-name descname"><span class="pre">F2QMapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttspec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec" title="yaf2q.ternary_tree_spec.TernaryTreeSpec"><span class="pre">TernaryTreeSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Fermion to qubit mapper</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.kind" title="Link to this definition"></a></dt>
+<dd><p>kind of the fermion to qubit mapper (jordan-wigner,parity,bravyi-kitaev)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.num_qubits">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.num_qubits" title="Link to this definition"></a></dt>
+<dd><p>number of qubits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.ttspec">
+<span class="sig-name descname"><span class="pre">ttspec</span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.ttspec" title="Link to this definition"></a></dt>
+<dd><p>ternary tree specification</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec" title="yaf2q.ternary_tree_spec.TernaryTreeSpec">TernaryTreeSpec</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.encoding_matrix">
+<span class="sig-name descname"><span class="pre">encoding_matrix</span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.encoding_matrix" title="Link to this definition"></a></dt>
+<dd><p>endoding matrix for the fermion to qubit mapper</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.encoding_matrix_inv">
+<span class="sig-name descname"><span class="pre">encoding_matrix_inv</span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.encoding_matrix_inv" title="Link to this definition"></a></dt>
+<dd><p>inverse of the endoding matrix for the fermion to qubit mapper</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id0">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><p>getter of the encoding_matrix</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id1">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding_matrix_inv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id1" title="Link to this definition"></a></dt>
+<dd><p>getter of the encoding_matrix_inv</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.fermion_to_qubit_operator">
+<span class="sig-name descname"><span class="pre">fermion_to_qubit_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fermion_operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">InteractionOperator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'tt'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet" title="yaf2q.qubit_operator_set.QubitOperatorSet"><span class="pre">QubitOperatorSet</span></a></span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.fermion_to_qubit_operator" title="Link to this definition"></a></dt>
+<dd><p>Get the qubit operator from the fermion operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fermion_operator</strong> (<em>InteractionOperator</em>) – fermion operator</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>set of the qubit operators</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet" title="yaf2q.qubit_operator_set.QubitOperatorSet">QubitOperatorSet</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.fock_to_qubit_state">
+<span class="sig-name descname"><span class="pre">fock_to_qubit_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fock_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.fock_to_qubit_state" title="Link to this definition"></a></dt>
+<dd><p>Get the qubit state from the fock state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fock_state</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – fock state</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>qubit_state</strong> – qubit state</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id2">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id2" title="Link to this definition"></a></dt>
+<dd><p>getter of the kind</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id3">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id3" title="Link to this definition"></a></dt>
+<dd><p>getter of the num_qubits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.qubit_to_fock_state">
+<span class="sig-name descname"><span class="pre">qubit_to_fock_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.qubit_to_fock_state" title="Link to this definition"></a></dt>
+<dd><p>Get the fock state from the qubit state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qubit_state</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – qubit state</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fock_state</strong> – fock state</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.f2q_mapper.F2QMapper.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#yaf2q.f2q_mapper.F2QMapper.to_string" title="Link to this definition"></a></dt>
+<dd><p>Get the string of the F2QMapper</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>string of the F2QMapper</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id4">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ttspec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id4" title="Link to this definition"></a></dt>
+<dd><p>getter of the ttspec</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-yaf2q.qubit_operator_set">
+<span id="yaf2q-qubit-operator-set-module"></span><h2>yaf2q.qubit_operator_set module<a class="headerlink" href="#module-yaf2q.qubit_operator_set" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">yaf2q.qubit_operator_set.</span></span><span class="sig-name descname"><span class="pre">QubitOperatorSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">openfermion_form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QubitOperator</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Set of qubit operators</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.num_qubits">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.num_qubits" title="Link to this definition"></a></dt>
+<dd><p>number of qubits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.openfermion_form">
+<span class="sig-name descname"><span class="pre">openfermion_form</span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.openfermion_form" title="Link to this definition"></a></dt>
+<dd><p>qubit operator in openfermion format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QubitOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.qiskit_form">
+<span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.qiskit_form" title="Link to this definition"></a></dt>
+<dd><p>qubit operator in qiskit format</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.eigenvalues">
+<span class="sig-name descname"><span class="pre">eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigenvalues" title="Link to this definition"></a></dt>
+<dd><p>Get the eigen-values of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – number of the eigen-values in order from smallest to largest</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>eigenvalues</strong> – list of eigenvalues</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.eigenvectors">
+<span class="sig-name descname"><span class="pre">eigenvectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">complex</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigenvectors" title="Link to this definition"></a></dt>
+<dd><p>Get the eigen-vectors of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – number of the eigen-values in order from smallest to largest</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>eigenvectors</strong> – list of eigenvectors</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.eigsh">
+<span class="sig-name descname"><span class="pre">eigsh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigsh" title="Link to this definition"></a></dt>
+<dd><p>Get the eigen-values and eigen-vectors of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – number of the eigen-values,eigen-vectors in order from smallest to largest</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>eigenvalues, eigenvectors</strong> – list of the eigenvalues</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list,list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id5">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#id5" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id6">
+<span class="sig-name descname"><span class="pre">openfermion_form</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">QubitOperator</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id6" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.pauli_weights">
+<span class="sig-name descname"><span class="pre">pauli_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.pauli_weights" title="Link to this definition"></a></dt>
+<dd><p>Get the pauli weights of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>weights</strong> – pauli weights of QubitOperator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If the qubit operator is 0.1*X[0]*Z[1]+0.2*X[1]*Y[2]*Z[3], then returned list is [2, 3].</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id7">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd><p>getter of the qiskit_form</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.to_string" title="Link to this definition"></a></dt>
+<dd><p>Get the string of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>string of the QubitOperator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-yaf2q.ternary_tree_spec">
+<span id="yaf2q-ternary-tree-spec-module"></span><h2>yaf2q.ternary_tree_spec module<a class="headerlink" href="#module-yaf2q.ternary_tree_spec" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">yaf2q.ternary_tree_spec.</span></span><span class="sig-name descname"><span class="pre">TernaryTreeSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Specification of ternary tree</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.num_qubits">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.num_qubits" title="Link to this definition"></a></dt>
+<dd><p>number of qubits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.indices">
+<span class="sig-name descname"><span class="pre">indices</span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.indices" title="Link to this definition"></a></dt>
+<dd><p>node indices list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.edges">
+<span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.edges" title="Link to this definition"></a></dt>
+<dd><p>dictionary data with child node indices as keys, parent node indices and Pauli strings as values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int,tuple[int,str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec._parent_dict">
+<span class="sig-name descname"><span class="pre">_parent_dict</span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec._parent_dict" title="Link to this definition"></a></dt>
+<dd><p>dictionary data with child indices as keys, parent indices as values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int,int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec._mask">
+<span class="sig-name descname"><span class="pre">_mask</span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec._mask" title="Link to this definition"></a></dt>
+<dd><p>list with a size three times the number of nodes in the graph,
+that the position corresponding to the value of the parent dict is 1 and the other positions are 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Child index is equal to the graph node index, parent index is 3 times the graph node index
+plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;1,Z=&gt;2.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.change_parent">
+<span class="sig-name descname"><span class="pre">change_parent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.change_parent" title="Link to this definition"></a></dt>
+<dd><p>get the TernaryTreeSpec that parent node corresponding to the child node has been changed randomly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ttspec</strong> – TernaryTreeSpec that parent node corresponding to the child node has been changed randomly</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec" title="yaf2q.ternary_tree_spec.TernaryTreeSpec">TernaryTreeSpec</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id8">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<dd><p>Get the edges of the TernaryTreeSpec</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>None</strong></p></li>
+<li><p><strong>Reterns</strong></p></li>
+<li><p><strong>-------</strong></p></li>
+<li><p><strong>edges</strong> (<em>dict</em><em>[</em><em>int</em><em>,</em><em>tuple</em><em>[</em><em>int</em><em>,</em><em>str</em><em>]</em><em>]</em>) – dictionary data with child node numbers as keys, parent node numbers and Pauli strings as values</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id9">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
+<dd><p>Get the indices</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.is_valid" title="Link to this definition"></a></dt>
+<dd><p>check validity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the TernaryTreeSpec is valid or not</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<dd><p>Get the number of qubits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.random">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.random" title="Link to this definition"></a></dt>
+<dd><p>Get a TernaryTreeSpec randomly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num_indices</strong> (<em>int</em>) – number of indices</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ttspec</strong> – ternary tree specification</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec" title="yaf2q.ternary_tree_spec.TernaryTreeSpec">TernaryTreeSpec</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.show" title="Link to this definition"></a></dt>
+<dd><p>show the ternary tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.swap_indices">
+<span class="sig-name descname"><span class="pre">swap_indices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.swap_indices" title="Link to this definition"></a></dt>
+<dd><p>get the TernaryTreeSpec that swapped two indices randomly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ttspec</strong> – TernaryTreeSpec that swaped two indices randomly</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec" title="yaf2q.ternary_tree_spec.TernaryTreeSpec">TernaryTreeSpec</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.ternary_tree_spec.TernaryTreeSpec.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.to_string" title="Link to this definition"></a></dt>
+<dd><p>Get the string of TernaryTreeSpec</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>s</strong> – string of the TernaryTreeSpec</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-yaf2q">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-yaf2q" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">yaf2q.</span></span><span class="sig-name descname"><span class="pre">F2QMapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttspec</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec" title="yaf2q.ternary_tree_spec.TernaryTreeSpec"><span class="pre">TernaryTreeSpec</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.F2QMapper" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Fermion to qubit mapper</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.kind">
+<span class="sig-name descname"><span class="pre">kind</span></span><a class="headerlink" href="#yaf2q.F2QMapper.kind" title="Link to this definition"></a></dt>
+<dd><p>kind of the fermion to qubit mapper (jordan-wigner,parity,bravyi-kitaev)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.num_qubits">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><a class="headerlink" href="#yaf2q.F2QMapper.num_qubits" title="Link to this definition"></a></dt>
+<dd><p>number of qubits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.ttspec">
+<span class="sig-name descname"><span class="pre">ttspec</span></span><a class="headerlink" href="#yaf2q.F2QMapper.ttspec" title="Link to this definition"></a></dt>
+<dd><p>ternary tree specification</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.TernaryTreeSpec" title="yaf2q.TernaryTreeSpec">TernaryTreeSpec</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.encoding_matrix">
+<span class="sig-name descname"><span class="pre">encoding_matrix</span></span><a class="headerlink" href="#yaf2q.F2QMapper.encoding_matrix" title="Link to this definition"></a></dt>
+<dd><p>endoding matrix for the fermion to qubit mapper</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.encoding_matrix_inv">
+<span class="sig-name descname"><span class="pre">encoding_matrix_inv</span></span><a class="headerlink" href="#yaf2q.F2QMapper.encoding_matrix_inv" title="Link to this definition"></a></dt>
+<dd><p>inverse of the endoding matrix for the fermion to qubit mapper</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id11">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
+<dd><p>getter of the encoding_matrix</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id12">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding_matrix_inv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
+<dd><p>getter of the encoding_matrix_inv</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.fermion_to_qubit_operator">
+<span class="sig-name descname"><span class="pre">fermion_to_qubit_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fermion_operator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">InteractionOperator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'tt'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet" title="yaf2q.qubit_operator_set.QubitOperatorSet"><span class="pre">QubitOperatorSet</span></a></span></span><a class="headerlink" href="#yaf2q.F2QMapper.fermion_to_qubit_operator" title="Link to this definition"></a></dt>
+<dd><p>Get the qubit operator from the fermion operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fermion_operator</strong> (<em>InteractionOperator</em>) – fermion operator</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>set of the qubit operators</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.QubitOperatorSet" title="yaf2q.QubitOperatorSet">QubitOperatorSet</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.fock_to_qubit_state">
+<span class="sig-name descname"><span class="pre">fock_to_qubit_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fock_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.F2QMapper.fock_to_qubit_state" title="Link to this definition"></a></dt>
+<dd><p>Get the qubit state from the fock state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>fock_state</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – fock state</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>qubit_state</strong> – qubit state</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id13">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<dd><p>getter of the kind</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id14">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
+<dd><p>getter of the num_qubits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.qubit_to_fock_state">
+<span class="sig-name descname"><span class="pre">qubit_to_fock_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit_state</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.F2QMapper.qubit_to_fock_state" title="Link to this definition"></a></dt>
+<dd><p>Get the fock state from the qubit state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>qubit_state</strong> (<em>list</em><em>[</em><em>int</em><em>]</em>) – qubit state</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>fock_state</strong> – fock state</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.F2QMapper.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#yaf2q.F2QMapper.to_string" title="Link to this definition"></a></dt>
+<dd><p>Get the string of the F2QMapper</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>string of the F2QMapper</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id15">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ttspec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
+<dd><p>getter of the ttspec</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">yaf2q.</span></span><span class="sig-name descname"><span class="pre">QubitOperatorSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">openfermion_form</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">QubitOperator</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.QubitOperatorSet" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Set of qubit operators</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.num_qubits">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.num_qubits" title="Link to this definition"></a></dt>
+<dd><p>number of qubits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.openfermion_form">
+<span class="sig-name descname"><span class="pre">openfermion_form</span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.openfermion_form" title="Link to this definition"></a></dt>
+<dd><p>qubit operator in openfermion format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QubitOperator</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.qiskit_form">
+<span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.qiskit_form" title="Link to this definition"></a></dt>
+<dd><p>qubit operator in qiskit format</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.eigenvalues">
+<span class="sig-name descname"><span class="pre">eigenvalues</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.eigenvalues" title="Link to this definition"></a></dt>
+<dd><p>Get the eigen-values of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – number of the eigen-values in order from smallest to largest</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>eigenvalues</strong> – list of eigenvalues</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.eigenvectors">
+<span class="sig-name descname"><span class="pre">eigenvectors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">complex</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.eigenvectors" title="Link to this definition"></a></dt>
+<dd><p>Get the eigen-vectors of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – number of the eigen-values in order from smallest to largest</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>eigenvectors</strong> – list of eigenvectors</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.eigsh">
+<span class="sig-name descname"><span class="pre">eigsh</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">ndarray</span><span class="p"><span class="pre">[</span></span><span class="pre">ndarray</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.eigsh" title="Link to this definition"></a></dt>
+<dd><p>Get the eigen-values and eigen-vectors of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num</strong> (<em>int</em>) – number of the eigen-values,eigen-vectors in order from smallest to largest</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>eigenvalues, eigenvectors</strong> – list of the eigenvalues</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[list,list]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id16">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">openfermion_form</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">QubitOperator</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id17" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.pauli_weights">
+<span class="sig-name descname"><span class="pre">pauli_weights</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.pauli_weights" title="Link to this definition"></a></dt>
+<dd><p>Get the pauli weights of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>weights</strong> – pauli weights of QubitOperator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If the qubit operator is 0.1*X[0]*Z[1]+0.2*X[1]*Y[2]*Z[3], then returned list is [2, 3].</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id18">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#id18" title="Link to this definition"></a></dt>
+<dd><p>getter of the qiskit_form</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.to_string" title="Link to this definition"></a></dt>
+<dd><p>Get the string of QubitOperator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>string of the QubitOperator</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">yaf2q.</span></span><span class="sig-name descname"><span class="pre">TernaryTreeSpec</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edges</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.TernaryTreeSpec" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Specification of ternary tree</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.num_qubits">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.num_qubits" title="Link to this definition"></a></dt>
+<dd><p>number of qubits</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.indices">
+<span class="sig-name descname"><span class="pre">indices</span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.indices" title="Link to this definition"></a></dt>
+<dd><p>node indices list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.edges">
+<span class="sig-name descname"><span class="pre">edges</span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.edges" title="Link to this definition"></a></dt>
+<dd><p>dictionary data with child node indices as keys, parent node indices and Pauli strings as values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int,tuple[int,str]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec._parent_dict">
+<span class="sig-name descname"><span class="pre">_parent_dict</span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec._parent_dict" title="Link to this definition"></a></dt>
+<dd><p>dictionary data with child indices as keys, parent indices as values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict[int,int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec._mask">
+<span class="sig-name descname"><span class="pre">_mask</span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec._mask" title="Link to this definition"></a></dt>
+<dd><p>list with a size three times the number of nodes in the graph,
+that the position corresponding to the value of the parent dict is 1 and the other positions are 0.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list[int]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Notes</p>
+<p>Child index is equal to the graph node index, parent index is 3 times the graph node index
+plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;1,Z=&gt;2.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.change_parent">
+<span class="sig-name descname"><span class="pre">change_parent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.change_parent" title="Link to this definition"></a></dt>
+<dd><p>get the TernaryTreeSpec that parent node corresponding to the child node has been changed randomly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ttspec</strong> – TernaryTreeSpec that parent node corresponding to the child node has been changed randomly</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.TernaryTreeSpec" title="yaf2q.TernaryTreeSpec">TernaryTreeSpec</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id19">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id19" title="Link to this definition"></a></dt>
+<dd><p>Get the edges of the TernaryTreeSpec</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>None</strong></p></li>
+<li><p><strong>Reterns</strong></p></li>
+<li><p><strong>-------</strong></p></li>
+<li><p><strong>edges</strong> (<em>dict</em><em>[</em><em>int</em><em>,</em><em>tuple</em><em>[</em><em>int</em><em>,</em><em>str</em><em>]</em><em>]</em>) – dictionary data with child node numbers as keys, parent node numbers and Pauli strings as values</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id20">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id20" title="Link to this definition"></a></dt>
+<dd><p>Get the indices</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.is_valid">
+<span class="sig-name descname"><span class="pre">is_valid</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.is_valid" title="Link to this definition"></a></dt>
+<dd><p>check validity</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the TernaryTreeSpec is valid or not</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id21">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id21" title="Link to this definition"></a></dt>
+<dd><p>Get the number of qubits</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.random">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">random</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_indices</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.random" title="Link to this definition"></a></dt>
+<dd><p>Get a TernaryTreeSpec randomly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>num_indices</strong> (<em>int</em>) – number of indices</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ttspec</strong> – ternary tree specification</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.TernaryTreeSpec" title="yaf2q.TernaryTreeSpec">TernaryTreeSpec</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.show">
+<span class="sig-name descname"><span class="pre">show</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.show" title="Link to this definition"></a></dt>
+<dd><p>show the ternary tree</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.swap_indices">
+<span class="sig-name descname"><span class="pre">swap_indices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Self</span></span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.swap_indices" title="Link to this definition"></a></dt>
+<dd><p>get the TernaryTreeSpec that swapped two indices randomly</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>ttspec</strong> – TernaryTreeSpec that swaped two indices randomly</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#yaf2q.TernaryTreeSpec" title="yaf2q.TernaryTreeSpec">TernaryTreeSpec</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="yaf2q.TernaryTreeSpec.to_string">
+<span class="sig-name descname"><span class="pre">to_string</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="headerlink" href="#yaf2q.TernaryTreeSpec.to_string" title="Link to this definition"></a></dt>
+<dd><p>Get the string of TernaryTreeSpec</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>s</strong> – string of the TernaryTreeSpec</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="yaf2q.yaf2q_encoding_matrix">
+<span class="sig-prename descclassname"><span class="pre">yaf2q.</span></span><span class="sig-name descname"><span class="pre">yaf2q_encoding_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttspec_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.yaf2q_encoding_matrix" title="Link to this definition"></a></dt>
+<dd><p>Get the encoding matrix</p>
+<p># Arguments</p>
+<ul class="simple">
+<li><p><cite>kind</cite> - kind of fermion to qubit transformation (jordan-wigner/parity/bravyi-kitaev)</p></li>
+<li><p><cite>ttspec_str</cite> - ternary tree generator (string)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="yaf2q.yaf2q_encoding_matrix_inv">
+<span class="sig-prename descclassname"><span class="pre">yaf2q.</span></span><span class="sig-name descname"><span class="pre">yaf2q_encoding_matrix_inv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttspec_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.yaf2q_encoding_matrix_inv" title="Link to this definition"></a></dt>
+<dd><p>Get the inverse of encoding matrix</p>
+<p># Arguments</p>
+<ul class="simple">
+<li><p><cite>kind</cite> - kind of fermion to qubit transformation (jordan-wigner/parity/bravyi-kitaev)</p></li>
+<li><p><cite>ttspec_str</cite> - ternary tree generator (string)</p></li>
+</ul>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="yaf2q.yaf2q_operator">
+<span class="sig-prename descclassname"><span class="pre">yaf2q.</span></span><span class="sig-name descname"><span class="pre">yaf2q_operator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ttspec_str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fh_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#yaf2q.yaf2q_operator" title="Link to this definition"></a></dt>
+<dd><p>Transform the fermion operator (string) to qubit operator</p>
+<p># Arguments</p>
+<ul class="simple">
+<li><p><cite>kind</cite> - kind of fermion to qubit transformation (jordan-wigner/parity/bravyi-kitaev)</p></li>
+<li><p><cite>ttspec_str</cite> - ternary tree generator (string)</p></li>
+<li><p><cite>fh_str</cite> - fermion operator (string)</p></li>
+</ul>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="tutorial_jp.html" class="btn btn-neutral float-left" title="Tutorial(japanese)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="yaf2q.optimizer.html" class="btn btn-neutral float-right" title="yaf2q.optimizer package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Sam.N.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
