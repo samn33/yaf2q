@@ -1,7 +1,5 @@
-yaf2q
-=====
-
-Yet another fermion-to-qubit mapping library
+Introduction
+============
 
 ## Feature
 
@@ -32,11 +30,6 @@ $ make uninstall
 ```bash
 $ make test
 ```
-
-## Documents
-
-- [Welcome to yaf2q's documentation!](https://samn33.github.io/yaf2q/)
-
 
 ## References
 
