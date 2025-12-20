@@ -1,5 +1,5 @@
-チュートリアル
-==============
+Tutorial(japanese)
+==================
 
 yaf2qは、量子化学計算で用いられるフェルミオン・量子ビット変換を実行するためのPythonライブラリです。以下に示す2つの機能を提供しています。
 
@@ -154,7 +154,7 @@ print(qubit_hamiltonian.pauli_weights())
 
 Ternary Treeは、一般には各ノードが高々3個の子ノードを持つようになっている木構造のことです。が、フェルミオン・量子ビット変換で対象としているのは、以下に示すような特別なTernary Treeです。
 
-![ternary_tree_1](fig/ternary_tree_1.png)
+![ternary_tree_1](_images/ternary_tree_1.png)
 
 ここで、ノードは楕円で表現されておりノード番号がその中に記載されています。ノードから伸びているエッジは3本であり、各々X,Y,Zというラベルがついています。これは各々パウリX,Y,Z演算子に対応しています。一般的なTernary Treeと違うのは子ノードがないエッジも許されているということです。詳細は[README.md](../../../README.md)に記載されている参考文献1.["From fermions to Qubits: A ZX-Calculus Perspective"](https://arxiv.org/abs/2505.06212)やそれを解説したブログ記事["ZX-calculusを用いたフェルミオン量子ビット変換（１）](https://qiita.com/SamN/items/305a8fe5a6573213ffb8)[（２）](https://qiita.com/SamN/items/4f5c1c8dc3d79c478fc4)[（３）](https://qiita.com/SamN/items/6c9cb250c2b41fa36fec)[（４）](https://qiita.com/SamN/items/3a56984ddef7645968b3)"をご参照いただくとして、ここでは、とりあえず、このようなTernary Treeによって任意のフェルミオン・量子ビット変換を規定することができて、その変換のアルゴリズムもわかっているということをおさえておけば十分です。
 
@@ -187,7 +187,7 @@ ttspec.show()
 ```
 のようにすると、ノード番号だけ異なるTernary Treeを以下のように得ることができます（このとき、edgesは変更しないでください。変更すると木構造の形も変わってしまいます。このフォーマットについて、もう少し詳しく言うと、edgesに記載されている整数値は、いま考えているTernary Treeの最上位の親ノードから幅優先探索をしたときの探索順を表しています。別の言い方をすると、これがTernary Treeの構造を決めています。indicesはそのように順序付けられたノードのそれぞれを何番目の量子ビットとするかを表しています）。
 
-![ternary_tree_2](fig/ternary_tree_2.png)
+![ternary_tree_2](_images/ternary_tree_2.png)
 
 明示的にindicesとedgesを指定せずにランダムにTernary Treeを作成することもできます。以下のように、random()メソッドにノード数を引数に与えることで得ることができます。
 
