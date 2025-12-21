@@ -1,5 +1,7 @@
 import pytest
 import random
+import itertools
+import numpy as np
 
 from yaf2q.ternary_tree_spec import TernaryTreeSpec
 from yaf2q.f2q_mapper import F2QMapper
@@ -99,6 +101,11 @@ def test_eigenvalue_H3(fermion_hamiltonian_H3):
     actual = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian_H3).eigenvalues(num=1)[0]
     assert actual == pytest.approx(expect, abs=0.0001)
     
+    # bravyi-kiaev
+    f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
+    actual = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian_H3).eigenvalues(num=1)[0]
+    assert actual == pytest.approx(expect, abs=0.0001)
+
     # ternary-tree
     f2q_mapper = F2QMapper(
         ttspec = TernaryTreeSpec(
@@ -156,6 +163,11 @@ def test_eigenvalue_LiH(fermion_hamiltonian_LiH):
     actual = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian_LiH).eigenvalues(num=1)[0]
     assert actual == pytest.approx(expect, abs=0.0001)
 
+    # bravyi-kiaev
+    f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
+    actual = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian_LiH).eigenvalues(num=1)[0]
+    assert actual == pytest.approx(expect, abs=0.0001)
+
     # ternary-tree
     f2q_mapper = F2QMapper(
         ttspec = TernaryTreeSpec(
@@ -183,6 +195,11 @@ def test_eigenvalue_BeH2(fermion_hamiltonian_BeH2):
     actual = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian_BeH2).eigenvalues(num=1)[0]
     assert actual == pytest.approx(expect, abs=0.0001)
 
+    # bravyi-kiaev
+    f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
+    actual = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian_BeH2).eigenvalues(num=1)[0]
+    assert actual == pytest.approx(expect, abs=0.0001)
+
     # ternary-tree.random (seed = 1)
     random.seed(1)
     f2q_mapper = F2QMapper(
@@ -207,6 +224,11 @@ def test_eigenvalue_H2O(fermion_hamiltonian_H2O):
     actual = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian_H2O).eigenvalues(num=1)[0]
     assert actual == pytest.approx(expect, abs=0.0001)
     
+    # bravyi-kiaev
+    f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
+    actual = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian_H2O).eigenvalues(num=1)[0]
+    assert actual == pytest.approx(expect, abs=0.0001)
+
     # ternary-tree.random (seed = 1)
     random.seed(1)
     f2q_mapper = F2QMapper(
@@ -216,105 +238,115 @@ def test_eigenvalue_H2O(fermion_hamiltonian_H2O):
     assert actual == pytest.approx(expect, abs=0.0001)
 
 
-def test_fock_to_qubit_state_H2(fermion_hamiltonian_H2):
+def test_fock_to_qubit_state_jordan_wigner():
 
-    num_qubits = fermion_hamiltonian_H2.one_body_tensor.shape[0]
-
-    # jordan-wigner
+    num_qubits = 4
     f2q_mapper = F2QMapper(kind="jordan-wigner", num_qubits=num_qubits)
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 0, 0])
-    expect = [1, 1, 0, 0]
-    assert actual == expect
+    for fock_state in itertools.product([0, 1], repeat = num_qubits):
+        expect = fock_state
+        actual = f2q_mapper.fock_to_qubit_state(fock_state)
+        assert actual == expect
 
-    # parity
+
+def test_fock_to_qubit_state_parity():
+
+    encoding_matrix = np.array([[1, 0, 0, 0],
+                                [1, 1, 0, 0],
+                                [1, 1, 1, 0],
+                                [1, 1, 1, 1]])
+    num_qubits = len(encoding_matrix)
     f2q_mapper = F2QMapper(kind="parity", num_qubits=num_qubits)
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 0, 0])
-    expect = [1, 0, 0, 0]
-    assert actual == expect
+    for fock_state in itertools.product([0, 1], repeat = num_qubits):
+        expect = list((encoding_matrix @ np.array(fock_state)) % 2)
+        actual = f2q_mapper.fock_to_qubit_state(fock_state)
+        assert actual == expect
 
-    # bravyi-kitaev
+
+def test_fock_to_qubit_state_bravyi_kitaev_4():
+
+    encoding_matrix = np.array([[1, 0, 0, 0],
+                                [1, 1, 0, 0],
+                                [0, 0, 1, 0],
+                                [1, 1, 1, 1]])
+    num_qubits = len(encoding_matrix)
     f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 0, 0])
-    expect = [1, 0, 0, 0]
-    assert actual == expect
-    
-    # ternary-tree
-    f2q_mapper = F2QMapper(
-        ttspec = TernaryTreeSpec(
-            indices = [1, 0, 3, 2],
-            edges = {1: (0, 'X'), 2: (1, 'X'), 3: (0, 'Y')},
-        )
-    )
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 0, 0])
-    expect = [1, 0, 0, 0]
-    assert actual == expect
+    for fock_state in itertools.product([0, 1], repeat = num_qubits):
+        expect = list((encoding_matrix @ np.array(fock_state)) % 2)
+        actual = f2q_mapper.fock_to_qubit_state(fock_state)
+        assert actual == expect
 
 
-def test_fock_to_qubit_state_H3(fermion_hamiltonian_H3):
+def test_fock_to_qubit_state_bravyi_kitaev_5():
 
-    num_qubits = fermion_hamiltonian_H3.one_body_tensor.shape[0]
-
-    # jordan-wigner
-    f2q_mapper = F2QMapper(kind="jordan-wigner", num_qubits=num_qubits)
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 1, 0, 0, 0])
-    expect = [1, 1, 1, 0, 0, 0]
-    assert actual == expect
-
-    # parity
-    f2q_mapper = F2QMapper(kind="parity", num_qubits=num_qubits)
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 1, 0, 0, 0])
-    expect = [1, 0, 1, 1, 1, 1]
-    assert actual == expect
-
-    # ternary-tree
-    f2q_mapper = F2QMapper(
-        ttspec = TernaryTreeSpec(
-            indices = [5, 3, 4, 2, 0, 1],
-            edges = {1: (0, 'X'), 2: (1, 'Y'), 3: (0, 'Z'), 4: (1, 'X'), 5: (3, 'Y')}
-        )
-    )
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 1, 0, 0, 0])
-    expect = [1, 1, 1, 1, 0, 0]
-    assert actual == expect
-
-
-def test_fock_to_qubit_state_H4(fermion_hamiltonian_H4):
-
-    num_qubits = fermion_hamiltonian_H4.one_body_tensor.shape[0]
-
-    # jordan-wigner
-    f2q_mapper = F2QMapper(kind="jordan-wigner", num_qubits=num_qubits)
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 1, 1, 0, 0, 0, 0])
-    expect = [1, 1, 1, 1, 0, 0, 0, 0]
-    assert actual == expect
-
-    # parity
-    f2q_mapper = F2QMapper(kind="parity", num_qubits=num_qubits)
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 1, 1, 0, 0, 0, 0])
-    expect = [1, 0, 1, 0, 0, 0, 0, 0]
-    assert actual == expect
-
-    # bravyi-kitaev
+    encoding_matrix = np.array([[1, 0, 0, 0, 0],
+                                [1, 1, 0, 0, 0],
+                                [0, 0, 1, 0, 0],
+                                [1, 1, 1, 1, 0],
+                                [0, 0, 0, 0, 1]])
+    num_qubits = len(encoding_matrix)
     f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 1, 1, 0, 0, 0, 0])
-    expect = [1, 0, 1, 0, 0, 0, 0, 0]    
-    assert actual == expect
-
-    # ternary-tree
-    f2q_mapper = F2QMapper(
-        ttspec = TernaryTreeSpec(
-            indices = [2, 4, 0, 6, 7, 3, 5, 1],
-            edges = {1: (0, 'Z'), 2: (1, 'X'), 3: (0, 'X'), 4: (2, 'Z'), 5: (0, 'Y'), 6: (5, 'Y'), 7: (6, 'Y')}
-        )
-    )
-    actual = f2q_mapper.fock_to_qubit_state([1, 1, 1, 1, 0, 0, 0, 0])
-    expect = [1, 0, 0, 1, 0, 0, 0, 0]
-    assert actual == expect
+    for fock_state in itertools.product([0, 1], repeat = num_qubits):
+        expect = list((encoding_matrix @ np.array(fock_state)) % 2)
+        actual = f2q_mapper.fock_to_qubit_state(fock_state)
+        assert actual == expect
 
 
-def test_qubit_to_fock_state_H2(fermion_hamiltonian_H2):
+def test_qubit_to_fock_state_jordan_wigner():
 
-    num_qubits = fermion_hamiltonian_H2.one_body_tensor.shape[0]
+    num_qubits = 4
+    f2q_mapper = F2QMapper(kind="jordan-wigner", num_qubits=num_qubits)
+    for qubit_state in itertools.product([0, 1], repeat = num_qubits):
+        expect = qubit_state
+        actual = f2q_mapper.qubit_to_fock_state(qubit_state)
+        assert actual == expect
+
+
+def test_qubit_to_fock_state_parity():
+
+    encoding_matrix_inv = np.array([[1, 0, 0, 0],
+                                    [1, 1, 0, 0],
+                                    [0, 1, 1, 0],
+                                    [0, 0, 1, 1]])
+    num_qubits = len(encoding_matrix_inv)
+    f2q_mapper = F2QMapper(kind="parity", num_qubits=num_qubits)
+    for qubit_state in itertools.product([0, 1], repeat = num_qubits):
+        expect = list((encoding_matrix_inv @ np.array(qubit_state)) % 2)
+        actual = f2q_mapper.qubit_to_fock_state(qubit_state)
+        assert actual == expect
+
+
+def test_qubit_to_fock_state_bravyi_kitaev_4():
+
+    encoding_matrix_inv = np.array([[1, 0, 0, 0],
+                                    [1, 1, 0, 0],
+                                    [0, 0, 1, 0],
+                                    [0, 1, 1, 1]])
+    num_qubits = len(encoding_matrix_inv)
+    f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
+    for qubit_state in itertools.product([0, 1], repeat = num_qubits):
+        expect = list((encoding_matrix_inv @ np.array(qubit_state)) % 2)
+        actual = f2q_mapper.qubit_to_fock_state(qubit_state)
+        assert actual == expect
+
+
+def test_qubit_to_fock_state_bravyi_kitaev_5():
+
+    encoding_matrix_inv = np.array([[1, 0, 0, 0, 0],
+                                    [1, 1, 0, 0, 0],
+                                    [0, 0, 1, 0, 0],
+                                    [0, 1, 1, 1, 0],
+                                    [0, 0, 0, 0, 1]])
+    num_qubits = len(encoding_matrix_inv)
+    f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
+    for qubit_state in itertools.product([0, 1], repeat = num_qubits):
+        expect = list((encoding_matrix_inv @ np.array(qubit_state)) % 2)
+        actual = f2q_mapper.qubit_to_fock_state(qubit_state)
+        assert actual == expect
+
+
+def test_qubit_to_fock_state():
+
+    num_qubits = 4
     fock_state = [1, 1, 0, 0]
 
     # jordan-wigner
@@ -340,70 +372,6 @@ def test_qubit_to_fock_state_H2(fermion_hamiltonian_H2):
         ttspec = TernaryTreeSpec(
             indices = [1, 0, 3, 2],
             edges = {1: (0, 'X'), 2: (1, 'X'), 3: (0, 'Y')},
-        )
-    )
-    qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)
-    actual = f2q_mapper.qubit_to_fock_state(qubit_state)
-    assert actual == fock_state
-
-
-def test_qubit_to_fock_state_H3(fermion_hamiltonian_H3):
-
-    num_qubits = fermion_hamiltonian_H3.one_body_tensor.shape[0]
-    fock_state = [1, 1, 1, 0, 0, 0]
-
-    # jordan-wigner
-    f2q_mapper = F2QMapper(kind="jordan-wigner", num_qubits=num_qubits)
-    qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)
-    actual = f2q_mapper.qubit_to_fock_state(qubit_state)
-    assert actual == fock_state
-
-    # parity
-    f2q_mapper = F2QMapper(kind="parity", num_qubits=num_qubits)
-    qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)
-    actual = f2q_mapper.qubit_to_fock_state(qubit_state)
-    assert actual == fock_state
-
-    # ternary-tree
-    f2q_mapper = F2QMapper(
-        ttspec = TernaryTreeSpec(
-            indices = [5, 3, 4, 2, 0, 1],
-            edges = {1: (0, 'X'), 2: (1, 'Y'), 3: (0, 'Z'), 4: (1, 'X'), 5: (3, 'Y')}
-        )
-    )
-    qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)
-    actual = f2q_mapper.qubit_to_fock_state(qubit_state)
-    assert actual == fock_state
-
-
-def test_qubit_to_fock_state_H4(fermion_hamiltonian_H4):
-
-    num_qubits = fermion_hamiltonian_H4.one_body_tensor.shape[0]
-    fock_state = [1, 1, 1, 1, 0, 0, 0, 0]
-
-    # jordan-wigner
-    f2q_mapper = F2QMapper(kind="jordan-wigner", num_qubits=num_qubits)
-    qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)
-    actual = f2q_mapper.qubit_to_fock_state(qubit_state)
-    assert actual == fock_state
-
-    # parity
-    f2q_mapper = F2QMapper(kind="parity", num_qubits=num_qubits)
-    qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)
-    actual = f2q_mapper.qubit_to_fock_state(qubit_state)
-    assert actual == fock_state
-
-    # bravyi-kitaev
-    f2q_mapper = F2QMapper(kind="bravyi-kitaev", num_qubits=num_qubits)
-    qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)
-    actual = f2q_mapper.qubit_to_fock_state(qubit_state)
-    assert actual == fock_state
-    
-    # ternary-tree
-    f2q_mapper = F2QMapper(
-        ttspec = TernaryTreeSpec(
-            indices = [2, 4, 0, 6, 7, 3, 5, 1],
-            edges = {1: (0, 'Z'), 2: (1, 'X'), 3: (0, 'X'), 4: (2, 'Z'), 5: (0, 'Y'), 6: (5, 'Y'), 7: (6, 'Y')}
         )
     )
     qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)
