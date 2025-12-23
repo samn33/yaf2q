@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tutorial(japanese) &mdash; yaf2q 0.1.0 documentation</title>
+  <title>Tutorial &mdash; yaf2q 0.1.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="yaf2q package" href="yaf2q.html" />
-    <link rel="prev" title="Tutorial" href="tutorial_en.html" /> 
+    <link rel="next" title="Tutorial(japanese)" href="tutorial_jp.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,16 +45,16 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial_en.html">Tutorial</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial(japanese)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">フェルミオン・量子ビット変換の実行</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#jordan-wigner-parity-bravyi-kitaev">従来の変換法：Jordan-Wigner／Parity／Bravyi-Kitaev変換</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ternary-tree">Ternary Treeを用いた変換法</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#performing-fermion-to-qubit-mappings">Performing Fermion-to-Qubit Mappings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#conventional-mapping-methods-jordan-wigner-parity-bravyi-kitaev-transformation">Conventional Mapping Methods: Jordan-Wigner, Parity, Bravyi-Kitaev transformation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mapping-method-using-ternary-trees">Mapping Method Using Ternary Trees</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#id2">フェルミオン・量子ビット変換の最適化</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#optimizing-fermion-to-qubit-mappings">Optimizing Fermion-to-Qubit Mappings</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_jp.html">Tutorial(japanese)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="yaf2q.html">yaf2q package</a></li>
 </ul>
 
@@ -72,9 +72,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Tutorial(japanese)</li>
+      <li class="breadcrumb-item active">Tutorial</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/tutorial_jp.md.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/tutorial_en.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -82,98 +82,98 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="tutorial-japanese">
-<h1>Tutorial(japanese)<a class="headerlink" href="#tutorial-japanese" title="Link to this heading"></a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>は、量子化学計算で用いられるフェルミオン・量子ビット変換を実行するためのPythonライブラリです。以下に示す2つの機能を提供しています。</p>
+  <section id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">yaf2q</span></code> is a Python library for performing fermion-to-qubit mapping used in quantum chemistry calculations. It offers two main functionalities:</p>
 <ul class="simple">
-<li><p><strong>フェルミオン・量子ビット変換の実行</strong></p>
-<ul>
-<li><p>フェルミオン・量子ビット変換の方法として従来からよく知られている「Jordan-Wigner変換」「Parity変換」「Bravyi-Kitaev変換」に対応するとともに、より汎用的にフェルミオン・量子ビット変換を記述できる「Ternary Tree（三分木）を用いた変換」にも対応しています。</p></li>
+<li><p><strong>Performing Fermion-to-Qubit Mappings</strong>:</p></li>
 </ul>
-</li>
-<li><p><strong>フェルミオン・量子ビット変換の最適化</strong></p>
-<ul>
-<li><p>Ternary Treeを用いてフェルミオン・量子ビット変換を実行したときに、量子ビット演算子に関する何らかの指標（例えば、ハミルトニアンの各項を構成するパウリ重みや、量子位相推定などの量子アルゴリズムを実行する量子回路の深さなど）が最小の値をとるような最適なTernary Treeの構造を探索することができます。</p></li>
+<ul class="simple">
+<li><p>It supports well-known conventional methods like the Jordan-Wigner, Parity, and Bravyi-Kitaev transformations. Additionally, it supports a more generalized approach using a Ternary Tree for describing fermion-to-qubit mappings.</p></li>
 </ul>
-</li>
+<ul class="simple">
+<li><p><strong>Optimizing Fermion-to-Qubit Mappings</strong>:</p></li>
 </ul>
-<p>以下では、上記2つの機能をどのように実行するかを順に説明します。まず「フェルミオン・量子ビット変換の実行」についてです。</p>
-<section id="id1">
-<h2>フェルミオン・量子ビット変換の実行<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<section id="jordan-wigner-parity-bravyi-kitaev">
-<h3>従来の変換法：Jordan-Wigner／Parity／Bravyi-Kitaev変換<a class="headerlink" href="#jordan-wigner-parity-bravyi-kitaev" title="Link to this heading"></a></h3>
-<p>フェルミオン・量子ビット変換を管理する<code class="docutils literal notranslate"><span class="pre">F2QMapper</span></code>クラスを以下のようにimportします。</p>
+<ul class="simple">
+<li><p>It is possible to search for a ternary tree structure that minimizes a chosen index, such as the Pauli weight in the mapped Hamiltonian, or the depth of the quantum circuit required to execute a quantum algorithm like Quantum Phase Estimation (QPE), when converting a fermionic operator to a qubit operator.</p></li>
+</ul>
+<p>Below is a step-by-step explanation of how to use these two functionalities.</p>
+<section id="performing-fermion-to-qubit-mappings">
+<h2>Performing Fermion-to-Qubit Mappings<a class="headerlink" href="#performing-fermion-to-qubit-mappings" title="Link to this heading"></a></h2>
+<section id="conventional-mapping-methods-jordan-wigner-parity-bravyi-kitaev-transformation">
+<h3>Conventional Mapping Methods: Jordan-Wigner, Parity, Bravyi-Kitaev transformation<a class="headerlink" href="#conventional-mapping-methods-jordan-wigner-parity-bravyi-kitaev-transformation" title="Link to this heading"></a></h3>
+<p>First, import the <code class="docutils literal notranslate"><span class="pre">F2QMapper</span></code> class, which manages the fermion-to-qubit mapping:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">yaf2q.f2q_mapper</span><span class="w"> </span><span class="kn">import</span> <span class="n">F2QMapper</span>
 </pre></div>
 </div>
-<p>従来の「Jordan-Wigner変換」「Parity変換」「Bravyi-Kitaev変換」を実行するための<code class="docutils literal notranslate"><span class="pre">F2QMapper</span></code>のインスタンスは、以下のように作成することができます。コンストラクタの引数として変換手法の文字列と量子ビット数を指定します。</p>
+<p>You can create an instance of <code class="docutils literal notranslate"><span class="pre">F2QMapper</span></code> for the conventional mappings as follows. The constructor takes the transformation method as a string and the number of qubits:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f2q_mapper</span> <span class="o">=</span> <span class="n">F2QMapper</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;jordan-wigner&quot;</span><span class="p">,</span> <span class="n">num_qubits</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">f2q_mapper</span> <span class="o">=</span> <span class="n">F2QMapper</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;parity&quot;</span><span class="p">,</span> <span class="n">num_qubits</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">f2q_mapper</span> <span class="o">=</span> <span class="n">F2QMapper</span><span class="p">(</span><span class="n">kind</span> <span class="o">=</span> <span class="s2">&quot;bravyi-kitaev&quot;</span><span class="p">,</span> <span class="n">num_qubits</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">f2q_mapper</span></code>をprintすると、以下のようになります（<code class="docutils literal notranslate"><span class="pre">bravyi-kitaev</span></code>を指定した場合）。<code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>では従来の3手法を”named mapper”と呼んでいます（一般的な用語ではありません）。</p>
+<p>Printing the <code class="docutils literal notranslate"><span class="pre">f2q_mapper</span></code> (when <code class="docutils literal notranslate"><span class="pre">bravyi-kitaev</span></code> is specified) will show:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f2q_mapper</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>出力:</p>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">named</span> <span class="n">mapper</span> <span class="o">-</span> <span class="n">bravyi</span><span class="o">-</span><span class="n">kitaev</span> <span class="p">(</span><span class="n">num_qubits</span><span class="p">:</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>フェルミオン・量子ビット変換の変換行列は、<code class="docutils literal notranslate"><span class="pre">encoding_matrix</span></code>プロパティとして格納されています。</p>
+<p>The fermion-to-qubit mapping matrix is stored in the <code class="docutils literal notranslate"><span class="pre">encoding_matrix</span></code> property:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">f2q_mapper</span><span class="o">.</span><span class="n">encoding_matrix</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>出力:</p>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span>
  <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>この変換行列は、フォック状態を量子ビット状態に変換するためのものです。例えば、|1100)というフォック状態は<code class="docutils literal notranslate"><span class="pre">[1,1,0,0]</span></code>というリストとして表現され、この変換行列を適用することで<code class="docutils literal notranslate"><span class="pre">[1,0,0,0]</span></code>というリストを得ることができ、これは量子ビット状態|1000&gt;を表しています。この行列をフォック状態を表すリストに行列として乗算することで量子ビット状態を得ることはできるのですが、<code class="docutils literal notranslate"><span class="pre">fock_to_qubit_state()</span></code>というメソッドを使う方が簡単です。以下のようにします。</p>
+<p>This matrix converts Fock states to qubit states. For example, the Fock state |1100) is represented as <code class="docutils literal notranslate"><span class="pre">[1,1,0,0]</span></code>. Applying this matrix yields <code class="docutils literal notranslate"><span class="pre">[1,0,0,0]</span></code>, corresponding to the qubit state |1000&gt;. While you can obtain the qubit state by matrix-multiplying the Fock state list, using the <code class="docutils literal notranslate"><span class="pre">fock_to_qubit_state()</span></code> method is simpler:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fock_state</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">qubit_state</span> <span class="o">=</span> <span class="n">f2q_mapper</span><span class="o">.</span><span class="n">fock_to_qubit_state</span><span class="p">(</span><span class="n">fock_state</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">qubit_state</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>出力:</p>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>逆変換のメソッドもあります。</p>
+<p>There is also an inverse transformation method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qubit_state</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="n">fock_state</span> <span class="o">=</span> <span class="n">f2q_mapper</span><span class="o">.</span><span class="n">qubit_to_fock_state</span><span class="p">(</span><span class="n">qubit_state</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fock_state</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>出力:</p>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>フェルミオン演算子を量子ビット演算子に変換する場合は、まず<a class="reference external" href="https://quantumai.google/openfermion">OpenFermion</a>を使って解析したいフェルミオン演算子を作成することから始めます。例えば、H2分子のフェルミオン・ハミルトニアンは、OpenFermionを使って以下のように作成することができます。仕様の詳細はOpenFermionのドキュメントをご参照ください。</p>
+<p>To convert a fermion operator to a qubit operator, you first create the fermion operator using a library like <a class="reference external" href="https://quantumai.google/openfermion">OpenFermion</a>. For instance, the fermion Hamiltonian for the H2 molecule can be created as follows:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openfermion</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularData</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">openfermionpyscf</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_pyscf</span>
 
 <span class="n">molecule</span> <span class="o">=</span> <span class="n">MolecularData</span><span class="p">(</span>
-    <span class="n">geometry</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">))]</span>
+    <span class="n">geometry</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)),</span> <span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.65</span><span class="p">))],</span>
     <span class="n">basis</span> <span class="o">=</span> <span class="s2">&quot;sto-3g&quot;</span><span class="p">,</span>
-    <span class="n">multiplicity</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">multiplicity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
     <span class="n">charge</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">molecule</span> <span class="o">=</span> <span class="n">run_pyscf</span><span class="p">(</span><span class="n">molecule</span><span class="p">,</span> <span class="n">run_scf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">run_fci</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">fermion_hamiltonian</span> <span class="o">=</span> <span class="n">molecule</span><span class="o">.</span><span class="n">get_molecular_hamiltonian</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>この<code class="docutils literal notranslate"><span class="pre">fermion_hamiltonian</span></code>（フェルミオン演算子）を<code class="docutils literal notranslate"><span class="pre">fermion_to_qubit_operator()</span></code>メソッドの引数に指定することで、以下のように、量子ビット演算子を得ることができます。</p>
+<p>You can then obtain the qubit operator by passing this <code class="docutils literal notranslate"><span class="pre">fermion_hamiltonian</span></code> to the <code class="docutils literal notranslate"><span class="pre">fermion_to_qubit_operator()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qubit_hamiltonian</span> <span class="o">=</span> <span class="n">f2q_mapper</span><span class="o">.</span><span class="n">fermion_to_qubit_operator</span><span class="p">(</span><span class="n">fermion_hamiltonian</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>この<code class="docutils literal notranslate"><span class="pre">qubit_hamiltonian</span></code>は<code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>の<code class="docutils literal notranslate"><span class="pre">QubitOperatorSet</span></code>クラスのインスタンスになっていて、この中に、OpenFermionで定義されている量子ビット演算子クラス（<code class="docutils literal notranslate"><span class="pre">QubitOperator</span></code>）やqiskitで定義されている量子ビット演算子クラス（<code class="docutils literal notranslate"><span class="pre">SparsePauliOp</span></code>）がメンバとして格納されています。各々<code class="docutils literal notranslate"><span class="pre">openfermion_form</span></code>および<code class="docutils literal notranslate"><span class="pre">qiskit_form</span></code>プロパティとして、以下のように取得することができます。</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">qubit_hamiltonian</span></code> is an instance of <code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>’s <code class="docutils literal notranslate"><span class="pre">QubitOperatorSet</span></code> class, which stores OpenFermion <code class="docutils literal notranslate"><span class="pre">QubitOperator</span></code> or qiskit <code class="docutils literal notranslate"><span class="pre">SparsePauliOp</span></code> objects. These can be accessed via the <code class="docutils literal notranslate"><span class="pre">openfermion_form</span></code> and <code class="docutils literal notranslate"><span class="pre">qiskit_form</span></code> properties, respectively:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">qubit_hamiltonian</span><span class="o">.</span><span class="n">openfermion_form</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>出力:</p>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">0.03775110394645509</span> <span class="p">[]</span> <span class="o">+</span>
 <span class="mf">0.04407961290255181</span> <span class="p">[</span><span class="n">X0</span> <span class="n">Z1</span> <span class="n">X2</span><span class="p">]</span> <span class="o">+</span>
 <span class="mf">0.04407961290255181</span> <span class="p">[</span><span class="n">X0</span> <span class="n">Z1</span> <span class="n">X2</span> <span class="n">Z3</span><span class="p">]</span> <span class="o">+</span>
@@ -194,39 +194,39 @@
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">qubit_hamiltonian</span><span class="o">.</span><span class="n">qiskit_form</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>出力:</p>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SparsePauliOp</span><span class="p">([</span><span class="s1">&#39;IIII&#39;</span><span class="p">,</span> <span class="s1">&#39;IIZI&#39;</span><span class="p">,</span> <span class="s1">&#39;IZII&#39;</span><span class="p">,</span> <span class="s1">&#39;IZIZ&#39;</span><span class="p">,</span> <span class="s1">&#39;IZZZ&#39;</span><span class="p">,</span> <span class="s1">&#39;XZXI&#39;</span><span class="p">,</span> <span class="s1">&#39;XZXZ&#39;</span><span class="p">,</span> <span class="s1">&#39;YZYI&#39;</span><span class="p">,</span> <span class="s1">&#39;YZYZ&#39;</span><span class="p">,</span> <span class="s1">&#39;ZIII&#39;</span><span class="p">,</span> <span class="s1">&#39;ZIZI&#39;</span><span class="p">,</span> <span class="s1">&#39;ZIZZ&#39;</span><span class="p">,</span> <span class="s1">&#39;ZZII&#39;</span><span class="p">,</span> <span class="s1">&#39;ZZZI&#39;</span><span class="p">,</span> <span class="s1">&#39;ZZZZ&#39;</span><span class="p">],</span> 
 	<span class="n">coeffs</span><span class="o">=</span><span class="p">[</span> <span class="mf">0.0377511</span> <span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.26941693</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.1729761</span> <span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.17866778</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.26941693</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.04407961</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.04407961</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.04407961</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.04407961</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.18601649</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.12584137</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.12584137</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span> <span class="mf">0.18601649</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.16992098</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">,</span>  <span class="mf">0.16992098</span><span class="o">+</span><span class="mf">0.</span><span class="n">j</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet</span></code>クラスには、固有値や固有ベクトルを求めるメソッドが定義されています。<code class="docutils literal notranslate"><span class="pre">eigenvalues()</span></code>メソッドの引数<code class="docutils literal notranslate"><span class="pre">num</span></code>に指定された数の固有値を小さいものから<code class="docutils literal notranslate"><span class="pre">num</span></code>個並んだリストとして得ることができます。</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">QubitOperatorSet</span></code> class also has methods for calculating eigenvalues and eigenvectors. The <code class="docutils literal notranslate"><span class="pre">eigenvalues()</span></code> method returns a list of the <code class="docutils literal notranslate"><span class="pre">num</span></code> smallest eigenvalues:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qubit_hamiltonian</span><span class="o">.</span><span class="n">eigenvalues</span><span class="p">(</span><span class="n">num</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>同様に<code class="docutils literal notranslate"><span class="pre">eigenvectors()</span></code>メソッドの引数<code class="docutils literal notranslate"><span class="pre">num</span></code>に指定された数の固有ベクトルを固有値の小さいものから<code class="docutils literal notranslate"><span class="pre">num</span></code>個並んだリストとして得ることができます。</p>
+<p>Similarly, <code class="docutils literal notranslate"><span class="pre">eigenvectors()</span></code> returns a list of the <code class="docutils literal notranslate"><span class="pre">num</span></code> corresponding eigenvectors:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qubit_hamiltonian</span><span class="o">.</span><span class="n">eigenvectors</span><span class="p">(</span><span class="n">num</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>固有値と固有ベクトルを同時に得たい場合は、<code class="docutils literal notranslate"><span class="pre">eigsh()</span></code>メソッドを使います。</p>
+<p>To obtain both eigenvalues and eigenvectors simultaneously, use the <code class="docutils literal notranslate"><span class="pre">eigsh()</span></code> method:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">eigenvalues</span><span class="p">,</span> <span class="n">eigenvectors</span> <span class="o">=</span> <span class="n">qubit_hamiltonian</span><span class="o">.</span><span class="n">eigsh</span><span class="p">(</span><span class="n">num</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>また、パウリ重み(pauli weight)のリストを得る<code class="docutils literal notranslate"><span class="pre">pauli_weights()</span></code>メソッドもあります。実行すると、</p>
+<p>There is also a <code class="docutils literal notranslate"><span class="pre">pauli_weights()</span></code> method that returns a list of Pauli weights:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">qubit_hamiltonian</span><span class="o">.</span><span class="n">pauli_weights</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>出力:</p>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>のようなリストが得られます。パウリ重みの平均値や最大値・最小値などを求める元データとして利用することができます。</p>
+<p>This list can be used to calculate statistics like the average, maximum, or minimum Pauli weight.</p>
 </section>
-<section id="ternary-tree">
-<h3>Ternary Treeを用いた変換法<a class="headerlink" href="#ternary-tree" title="Link to this heading"></a></h3>
-<p>Ternary Treeは、一般には各ノードが高々3個の子ノードを持つようになっている木構造のことです。が、フェルミオン・量子ビット変換で対象としているのは、以下に示すような特別なTernary Treeです。</p>
+<section id="mapping-method-using-ternary-trees">
+<h3>Mapping Method Using Ternary Trees<a class="headerlink" href="#mapping-method-using-ternary-trees" title="Link to this heading"></a></h3>
+<p>A Ternary Tree is generally a tree structure where each node has at most three children. However, for fermion-to-qubit mappings, a specific type of Ternary Tree is used, as illustrated below.</p>
 <p><img alt="ternary_tree_1" src="_images/ternary_tree_1.png" /></p>
-<p>ここで、ノードは楕円で表現されておりノード番号がその中に記載されています。ノードから伸びているエッジは3本であり、各々X,Y,Zというラベルがついています。これは各々パウリX,Y,Z演算子に対応しています。一般的なTernary Treeと違うのは子ノードがないエッジも許されているということです。詳細は論文<a class="reference external" href="https://arxiv.org/abs/2505.06212">”From fermions to Qubits: A ZX-Calculus Perspective”</a>やそれを解説したブログ記事<a class="reference external" href="https://qiita.com/SamN/items/305a8fe5a6573213ffb8">”ZX-calculusを用いたフェルミオン量子ビット変換（１）</a><a class="reference external" href="https://qiita.com/SamN/items/4f5c1c8dc3d79c478fc4">（２）</a><a class="reference external" href="https://qiita.com/SamN/items/6c9cb250c2b41fa36fec">（３）</a><a class="reference external" href="https://qiita.com/SamN/items/3a56984ddef7645968b3">（４）</a>”をご参照いただくとして、ここでは、とりあえず、このようなTernary Treeによって任意のフェルミオン・量子ビット変換を規定することができて、その変換のアルゴリズムもわかっているということをおさえておけば十分です。</p>
-<p>さて、それでは、<code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>でどのようにこのTernary Treeを定義するかを見ていきます。それには、<code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec</span></code>クラスを使います。そのコンストラクタに、以下のように、<code class="docutils literal notranslate"><span class="pre">indices</span></code>と<code class="docutils literal notranslate"><span class="pre">edges</span></code>という引数を指定することで、そのインスタンスを生成します。</p>
+<p>In this diagram, nodes are represented by ellipses with their numbers inside. Edges emanating from a node are labeled X, Y, or Z, corresponding to Pauli X, Y, and Z operators, respectively. Unlike general Ternary Trees, edges may not lead to a child node. For details, refer to the paper:<a class="reference external" href="https://arxiv.org/abs/2505.06212">”From fermions to Qubits: A ZX-Calculus Perspective”</a>. The key takeaway is that any fermion-to-qubit mapping can be defined by such a Ternary Tree, and the transformation algorithm is known.</p>
+<p>To define a Ternary Tree in <code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>, use the <code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec</span></code> class. Its constructor takes <code class="docutils literal notranslate"><span class="pre">indices</span></code> and <code class="docutils literal notranslate"><span class="pre">edges</span></code> arguments:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">yaf2q.ternary_tree_spec</span><span class="w"> </span><span class="kn">import</span> <span class="n">TernaryTreeSpec</span>
 
 <span class="n">ttspec</span> <span class="o">=</span> <span class="n">TernaryTreeSpec</span><span class="p">(</span>
@@ -235,12 +235,13 @@
 <span class="p">)</span>
 </pre></div>
 </div>
-<p>ここで、<code class="docutils literal notranslate"><span class="pre">indices</span></code>はノード番号のリストを表しています。4個の要素からなっているので4個のノードからなるTernary Treeということになります。<code class="docutils literal notranslate"><span class="pre">edges</span></code>はエッジ集合を表しているのですが、少々説明が必要です。上の例では1,2,3をキーとして、各々に対応した値が(0, ‘X’),(1, ‘Y’),(1, ‘Z’)というタプルである辞書データとして表現されています。キーは子ノード番号を表しています。対応したタプルの1番目の要素はそれが接続している親ノード番号で、2番目の要素は、親ノードに接続するエッジのラベル文字列です。ルートノード番号は0と決められている前提です。なので、子ノードを表すキーに0は含まれません。そして、親ノード番号は必ず子ノード番号より小さく、値のタプルに重複があってはならないという前提もあります。これでTernary Treeの構造は一意に決定できます（とりあえず<code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>で独自定義したフォーマットです）。</p>
+<p>Here, <code class="docutils literal notranslate"><span class="pre">indices</span></code> is a list of node numbers, defining a Ternary Tree with four nodes. <code class="docutils literal notranslate"><span class="pre">edges</span></code> represents the set of edges. The keys are child node numbers, and the values are tuples <code class="docutils literal notranslate"><span class="pre">(parent_node_number,</span> <span class="pre">edge_label)</span></code>. The root node is assumed to be 0. Child node numbers do not include 0, parent node numbers are always smaller than child node numbers, and edge tuples must be unique. This uniquely defines the Ternary Tree structure.</p>
+<p>You can visualize the Ternary Tree using <code class="docutils literal notranslate"><span class="pre">ttspec.show()</span></code>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ttspec</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>とすると、Ternary Tree図を表示してくれます。実は、上に図示したTernary Treeはこれで作成したものです。</p>
-<p>Ternary Treeの木構造はこのままにして、ノード番号のみを入れ替えたものを定義したい場合もあるかもしれません。その場合は、indicesの要素の並び順のみを変えます（edgesは変えないでください）。例えば、</p>
+<p>This will display the Ternary Tree diagram.</p>
+<p>If you want to define a Ternary Tree with the same structure but different node numbering, you can reorder the <code class="docutils literal notranslate"><span class="pre">indices</span></code> list. Do not change <code class="docutils literal notranslate"><span class="pre">edges</span></code>, as this would alter the tree’s shape.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ttspec</span> <span class="o">=</span> <span class="n">TernaryTreeSpec</span><span class="p">(</span>
     <span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
     <span class="n">edges</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;X&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">),</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">)},</span>
@@ -248,28 +249,28 @@
 <span class="n">ttspec</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>のようにすると、ノード番号だけ異なるTernary Treeを以下のように得ることができます（このとき、<code class="docutils literal notranslate"><span class="pre">edges</span></code>は変更しないでください。変更すると木構造の形も変わってしまいます。このフォーマットについて、もう少し詳しく言うと、<code class="docutils literal notranslate"><span class="pre">edges</span></code>に記載されている整数値は、いま考えているTernary Treeの最上位の親ノードから幅優先探索をしたときの探索順を表しています。別の言い方をすると、これがTernary Treeの構造を決めています。<code class="docutils literal notranslate"><span class="pre">indices</span></code>はそのように順序付けられたノードのそれぞれを何番目の量子ビットとするかを表しています）。</p>
+<p>This generates a Ternary Tree with only the node numbers changed:</p>
 <p><img alt="ternary_tree_2" src="_images/ternary_tree_2.png" /></p>
-<p>明示的に<code class="docutils literal notranslate"><span class="pre">indices</span></code>と<code class="docutils literal notranslate"><span class="pre">edges</span></code>を指定せずにランダムにTernary Treeを作成することもできます。以下のように、<code class="docutils literal notranslate"><span class="pre">random()</span></code>メソッドにノード数を引数に与えることで得ることができます。</p>
+<p>You can also generate a random Ternary Tree without explicitly specifying <code class="docutils literal notranslate"><span class="pre">indices</span></code> and <code class="docutils literal notranslate"><span class="pre">edges</span></code> using the <code class="docutils literal notranslate"><span class="pre">random()</span></code> class method, which takes the number of nodes as an argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ttspec</span> <span class="o">=</span> <span class="n">TernaryTreeSpec</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ttspec</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>出力:</p>
+<p>Output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span><span class="p">:[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">edges</span><span class="p">:{</span><span class="mi">1</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Z&#39;</span><span class="p">),</span> <span class="mi">2</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">),</span> <span class="mi">3</span><span class="p">:</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>このようにTernary Treeが作成できたところで、これに基づいたフェルミオン・量子ビット変換を実行するため、以下のように<code class="docutils literal notranslate"><span class="pre">F2QMapper</span></code>インスタンスを作成します。</p>
+<p>Once you have a Ternary Tree, you can create an <code class="docutils literal notranslate"><span class="pre">F2QMapper</span></code> instance based on it:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f2q_mapper</span> <span class="o">=</span> <span class="n">F2QMapper</span><span class="p">(</span><span class="n">ttspec</span><span class="o">=</span><span class="n">ttspec</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>これ以降は、「従来の変換法：Jordan-Wigner／Parity／Bravyi-Kitaev変換」で述べたのと同様にして、量子ビット状態を取得したり、量子ビット演算子やそれに対応した固有値・固有ベクトルやパウリ重みのリストを得ることができます。</p>
+<p>From this point, you can obtain qubit states, qubit operators, and their corresponding eigenvalues, eigenvectors, and Pauli weights, just as described in the “Conventional Mapping Methods” section.</p>
 </section>
 </section>
-<section id="id2">
-<h2>フェルミオン・量子ビット変換の最適化<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
-<p>次に、フェルミオン・量子ビット変換の最適化について説明します。</p>
-<p>いま、4個の水素原子からなる1次元水素鎖を考えて、その量子ビット・ハミルトニアンを構成するパウリ重みの平均を最小化するためのフェルミオン・量子ビット変換（＝Ternary Tree）を求めたいとします。そのために、まず、以下のように、OpenFerimionを使ってフェルミオン・ハミルトニアンfermion_hamiltonianを作成することから始めます。</p>
+<section id="optimizing-fermion-to-qubit-mappings">
+<h2>Optimizing Fermion-to-Qubit Mappings<a class="headerlink" href="#optimizing-fermion-to-qubit-mappings" title="Link to this heading"></a></h2>
+<p>Next, let’s discuss the optimization of fermion-to-qubit mappings.</p>
+<p>Consider a 1D chain of four hydrogen atoms and aim to find a fermion-to-qubit mapping (i.e., a Ternary Tree) that minimizes the average Pauli weight of the resulting qubit Hamiltonian. First, create the fermion Hamiltonian using OpenFermion:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">openfermion</span><span class="w"> </span><span class="kn">import</span> <span class="n">MolecularData</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">openfermionpyscf</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_pyscf</span>
 
@@ -289,7 +290,7 @@
 <span class="n">num_qubits</span> <span class="o">=</span> <span class="n">fermion_hamiltonian</span><span class="o">.</span><span class="n">one_body_tensor</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>そして、<code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec</span></code>のみを引数としてfloatを返す目的関数を以下のように定義します（関数内関数として定義してください）。</p>
+<p>Define an objective function that takes a <code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec</span></code> and returns a float (e.g., the average Pauli weight). This should be defined as an inner function:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">objective_func</span><span class="p">(</span><span class="n">ttspec</span><span class="p">:</span> <span class="n">TernaryTreeSpec</span><span class="p">):</span>
     <span class="n">f2q_mapper</span> <span class="o">=</span> <span class="n">F2QMapper</span><span class="p">(</span><span class="n">ttspec</span><span class="o">=</span><span class="n">ttspec</span><span class="p">)</span>
     <span class="n">qubit_hamiltonian</span> <span class="o">=</span> <span class="n">f2q_mapper</span><span class="o">.</span><span class="n">fermion_to_qubit_operator</span><span class="p">(</span><span class="n">fermion_hamiltonian</span><span class="p">)</span>
@@ -298,8 +299,8 @@
     <span class="k">return</span> <span class="n">weight_ave</span>
 </pre></div>
 </div>
-<p>フェルミオン・量子ビット変換を実行してできた量子ビット演算子<code class="docutils literal notranslate"><span class="pre">qubit_hamiltonian</span></code>からパウリ重みリストを取得して、その平均値を返すようになっています。この目的関数は、<code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec</span></code>を引数としてfloatを返すものであれば、どんな関数を定義しても良いです。例えば、<code class="docutils literal notranslate"><span class="pre">qubit_hamiltonian</span></code>に基づき量子位相推定の量子回路を作って、その回路深さを(floatとして)返すようにしても良いです。その場合、量子位相推定の深さを最小化するフェルミオン・量子ビット変換（=ternary tree）が得られます。</p>
-<p>目的関数が定義できたら、これを最小化する解(ternary tree)を求めます。それには<code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>の<code class="docutils literal notranslate"><span class="pre">SA</span></code>クラスを使います。SAはシミュレーテッド・アニーリング(Simulated Annealing)の略です。<code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>では、このアルゴリズムを使って目的関数を最小化する最適解(正確には近似解)を求めるようにしています。<code class="docutils literal notranslate"><span class="pre">SA</span></code>のコンストラクタには、量子ビット数(<code class="docutils literal notranslate"><span class="pre">num_qubit</span></code>)、目的関数(<code class="docutils literal notranslate"><span class="pre">objective_func</span></code>)、パラメータ(<code class="docutils literal notranslate"><span class="pre">params</span></code>)(後述)、詳細表示するか否かを表すブーリアン(verbose)を指定します。</p>
+<p>This function calculates the average Pauli weight. You can define any function that takes <code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec</span></code> and returns a float. For example, you could calculate the depth of a quantum circuit for Quantum Phase Estimation and aim to minimize that.</p>
+<p>With the objective function defined, you can use <code class="docutils literal notranslate"><span class="pre">yaf2q</span></code>’s <code class="docutils literal notranslate"><span class="pre">SA</span></code> class (Simulated Annealing) to find a solution that minimizes it. The <code class="docutils literal notranslate"><span class="pre">SA</span></code> constructor takes the number of qubits, the objective function, parameters (<code class="docutils literal notranslate"><span class="pre">SAParams</span></code>), and a verbose flag:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ttspec_opt</span> <span class="o">=</span> <span class="n">SA</span><span class="p">(</span>
         <span class="n">num_qubits</span> <span class="o">=</span> <span class="n">num_qubits</span><span class="p">,</span>
         <span class="n">objective_func</span> <span class="o">=</span> <span class="n">objective_func</span><span class="p">,</span>
@@ -308,9 +309,9 @@
 <span class="p">)</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>ここで、<code class="docutils literal notranslate"><span class="pre">params</span></code>はシミュレーテッド・アニーリングを制御するパラメータ<code class="docutils literal notranslate"><span class="pre">SAParams</span></code>のインスタンスなのですが、これは初期サンプリング(<code class="docutils literal notranslate"><span class="pre">init_sampling</span></code>)、アニーリングステップ数(<code class="docutils literal notranslate"><span class="pre">num_steps</span></code>)、冷却因子(<code class="docutils literal notranslate"><span class="pre">cooling_factor</span></code>)という属性値をもっており、それらをコンストラクタで指定できるようになっています。<code class="docutils literal notranslate"><span class="pre">init_sampling</span></code>は初期温度を決定するためにランダムサンプリングを最初に実行するのですが、そのサンプル数です。<code class="docutils literal notranslate"><span class="pre">num_steps</span></code>はアニーリングの温度を徐々に段階的に下げていく、その段階数です。<code class="docutils literal notranslate"><span class="pre">cooling_factor</span></code>は温度を下げていくカーブをどれだけ急峻にするかを表す因子です。0.0より大きい値を指定します。大きくなるほど急激に温度を下げる形になります。各々明示的に指定しない場合、<code class="docutils literal notranslate"><span class="pre">init_sampling=10</span></code>,<code class="docutils literal notranslate"><span class="pre">num_steps=10</span></code>,<code class="docutils literal notranslate"><span class="pre">cooling_factor=1.0</span></code>がデフォルト値として設定されます。どんな目的関数を定義するかによって探索の挙動は変わるので、デフォルト値で収束が悪いと感じた場合、各パラメータ値を調整する必要があります。</p>
-<p>これで、SAによる最適化器が作成できたので、実際の最適化を実行します。すでに上に示されていますが、<code class="docutils literal notranslate"><span class="pre">optimize()</span></code>メソッドを使います。これにより(近似的に)最適なternary tree(<code class="docutils literal notranslate"><span class="pre">ttspec_opt</span></code>)が得られます。</p>
-<p>そして、この<code class="docutils literal notranslate"><span class="pre">ttspec_opt</span></code>を使って、改めてフェルミオン・量子ビット変換を実行して、量子ビット演算子とパウリ重みを、以下のように計算して表示します。</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">SAParams</span></code> object controls the simulated annealing process with parameters like <code class="docutils literal notranslate"><span class="pre">init_sampling</span></code> (number of initial random samples), <code class="docutils literal notranslate"><span class="pre">num_steps</span></code> (number of annealing steps), and <code class="docutils literal notranslate"><span class="pre">cooling_factor</span></code> (how rapidly the temperature decreases). Default values are <code class="docutils literal notranslate"><span class="pre">init_sampling=10</span></code>, <code class="docutils literal notranslate"><span class="pre">num_steps=10</span></code>, and <code class="docutils literal notranslate"><span class="pre">cooling_factor=1.0</span></code>. Adjusting these parameters may be necessary for optimal convergence.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">optimize()</span></code> method then executes the optimization to find an (approximately) optimal ternary tree (<code class="docutils literal notranslate"><span class="pre">ttspec_opt</span></code>).</p>
+<p>Finally, use <code class="docutils literal notranslate"><span class="pre">ttspec_opt</span></code> to perform the fermion-to-qubit mapping and display the resulting qubit operator and Pauli weights:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;* ternary tree:</span><span class="se">\n</span><span class="si">{</span><span class="n">ttspec_opt</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">f2q_mapper</span> <span class="o">=</span> <span class="n">F2QMapper</span><span class="p">(</span><span class="n">ttspec</span><span class="o">=</span><span class="n">ttspec_opt</span><span class="p">)</span>
 <span class="n">qubit_hamiltonian</span> <span class="o">=</span> <span class="n">f2q_mapper</span><span class="o">.</span><span class="n">fermion_to_qubit_operator</span><span class="p">(</span><span class="n">fermion_hamiltonian</span><span class="p">)</span>
@@ -320,8 +321,7 @@
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;* pauli weight (ave): </span><span class="si">{</span><span class="n">weight_ave</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>これを実行してみると、例えば、以下の結果を得ることができます。</p>
-<p>出力:</p>
+<p>Example output:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">jordan</span><span class="o">-</span><span class="n">wigner</span><span class="p">]</span>
 <span class="o">*</span> <span class="n">pauli</span> <span class="n">wieght</span> <span class="p">(</span><span class="n">ave</span><span class="p">):</span> <span class="mf">4.583783783783784</span>
 <span class="p">[</span><span class="n">parity</span><span class="p">]</span>
@@ -334,8 +334,8 @@
 <span class="o">*</span> <span class="n">pauli</span> <span class="n">product</span> <span class="n">length</span> <span class="p">(</span><span class="n">ave</span><span class="p">):</span> <span class="mf">4.4324324324324325</span>
 </pre></div>
 </div>
-<p>従来の3手法と比べ、最適Ternary Treeのパウリ重みが一番小さいという結果になっています。</p>
-<p>シミュレーテッド・アニーリングは確率的な手法なので、実行のたびに[ternary tree optimization]の結果は変わります。が、乱数のシードを固定することで、結果を固定することもできます。以下のようにseedを指定します。</p>
+<p>The optimized Ternary Tree shows a smaller average Pauli weight compared to the conventional methods.</p>
+<p>Since simulated annealing is a stochastic method, the results of the ternary tree optimization will vary. You can fix the random seed for reproducible results:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ttspec_opt</span> <span class="o">=</span> <span class="n">SA</span><span class="p">(</span>
         <span class="n">num_qubits</span> <span class="o">=</span> <span class="n">num_qubits</span><span class="p">,</span>
         <span class="n">objective_func</span> <span class="o">=</span> <span class="n">objective_func</span><span class="p">,</span>
@@ -344,7 +344,6 @@
 <span class="p">)</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>以上</p>
 </section>
 </section>
 
@@ -352,8 +351,8 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="tutorial_en.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="yaf2q.html" class="btn btn-neutral float-right" title="yaf2q package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial_jp.html" class="btn btn-neutral float-right" title="Tutorial(japanese)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
