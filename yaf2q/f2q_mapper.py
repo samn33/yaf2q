@@ -3,7 +3,7 @@ import numpy as np
 
 import openfermion as of
 from openfermion.ops import InteractionOperator
-from openfermion.transforms import jordan_wigner, bravyi_kitaev
+from openfermion.transforms import jordan_wigner, bravyi_kitaev, bravyi_kitaev_code
 
 from yaf2q.ternary_tree_spec import TernaryTreeSpec
 from yaf2q.yaf2q import yaf2q_operator, yaf2q_encoding_matrix, yaf2q_encoding_matrix_inv
@@ -12,6 +12,20 @@ from yaf2q.qubit_operator_set import QubitOperatorSet
 
 def _is_power_of_two(n: int) -> bool:
     return n > 0 and (n & (n - 1) == 0)
+
+
+def _binary_inv(matrix):
+    n = matrix.shape[0]
+    aug = np.hstack((matrix.copy() % 2, np.eye(n, dtype=int)))
+    for i in range(n):
+        pivot = np.where(aug[i:, i] == 1)[0]
+        if len(pivot) == 0: raise ValueError("Not invertible")
+        pivot_idx = pivot[0] + i
+        aug[[i, pivot_idx]] = aug[[pivot_idx, i]]
+        for j in range(n):
+            if i != j and aug[j, i] == 1:
+                aug[j] = (aug[j] + aug[i]) % 2
+    return aug[:, n:].astype(int)
 
 
 class F2QMapper:
@@ -74,7 +88,8 @@ class F2QMapper:
                 self._encoding_matrix = np.array(yaf2q_encoding_matrix(kind, None, num_qubits))
                 self._encoding_matrix_inv = np.array(yaf2q_encoding_matrix_inv(kind, None, num_qubits))
             else:
-                raise ValueError("if kind is brabyi-kitaev, num_qubit must be a power of 2.")
+                self._encoding_matrix = bravyi_kitaev_code(num_qubits).encoder.toarray()
+                self._encoding_matrix_inv = _binary_inv(self._encoding_matrix)
         else:
             self._num_qubits = len(ttspec.indices)
             self._encoding_matrix = np.array(yaf2q_encoding_matrix(None, ttspec._to_string_rust(), num_qubits))
@@ -217,12 +232,10 @@ class F2QMapper:
             raise ValueError("kind is not specified.")
         elif self._kind == "jordan-wigner":
             openfermion_form = jordan_wigner(fermion_operator)
-            #encoding_matrix = None
         elif self._kind == "parity":
             raise ValueError("parity kind is not supported.")
         elif self._kind == "bravyi-kitaev":
             openfermion_form = bravyi_kitaev(fermion_operator)
-            #encoding_matrix = None
         else:
             raise ValueError("invalid f2q_mapper is specified.")
         
@@ -248,6 +261,8 @@ class F2QMapper:
 
         """
         if method == "tt":
+            if self._kind == "bravyi-kitaev" and not _is_power_of_two(self._num_qubits):
+                return self._fermion_to_qubit_operator_of(fermion_operator)
             return self._fermion_to_qubit_operator_tt(fermion_operator)
         elif method == "of":
             return self._fermion_to_qubit_operator_of(fermion_operator)

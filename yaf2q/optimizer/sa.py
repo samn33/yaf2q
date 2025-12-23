@@ -112,7 +112,7 @@ class SA:
         for i in range(num_steps):
             temper = temper_init * pow(((i + 1) * num_steps) / num_steps, -cooling_factor)
             if self.verbose:
-                print("\r", f"step = {i}, objective value = {obj_opt}", end="")
+                print("\r", f"step = {i + 1}/{num_steps}, objective value = {obj_opt}", end="")
                 if i == num_steps - 1:
                     print()
 

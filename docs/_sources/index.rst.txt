@@ -11,6 +11,7 @@ Welcome to yaf2q's documentation!
    :caption: Contents:
 
    introduction
+   tutorial_en
    tutorial_jp
    yaf2q
 
