@@ -1,91 +1,64 @@
 """ QPE circut optimizer using yaf2q """
 import numpy as np
 import argparse
+import warnings
 
 from openfermion import MolecularData
 from openfermionpyscf import run_pyscf
 
 from qiskit import QuantumCircuit, transpile
-from qiskit.circuit.library import QFTGate
-from qiskit_aer import AerSimulator
+from qiskit.circuit.library import PhaseEstimation
 from qiskit.circuit.library import PauliEvolutionGate
+from qiskit_aer import AerSimulator
 from qiskit.synthesis import SuzukiTrotter
 
 from yaf2q.ternary_tree_spec import TernaryTreeSpec
 from yaf2q.f2q_mapper import F2QMapper
 from yaf2q.optimizer.sa import SAParams, SA
 
-REPS = 10
-NUM_ANCILLA_QUBITS = 4
+warnings.simplefilter("ignore", category=DeprecationWarning) # for PhaseEstimation
 
-def make_qcircuit(qubit_state, qubit_hamiltonian,
-                  num_ancilla_qubits, qiskit_optlevel: int = 0):
+
+NUM_ANCILLA_QUBITS = 8
+TIME_INTERVAL = 0.5
+
+
+def make_qcircuit(qubit_state, qubit_hamiltonian, num_ancilla_qubits, qiskit_optlevel: int = 0):
     """ make QPE circuit """
 
+    # Unitary operator: U = exp(-i * H * t)
     num_qubits = qubit_hamiltonian.num_qubits
-    qiskit_hamiltonian = qubit_hamiltonian.qiskit_form
-    estimated_energy = abs(qubit_hamiltonian.eigenvalues(num=1)[0])
-    evolution_time = np.pi / estimated_energy
+    evolution_gate = PauliEvolutionGate(qubit_hamiltonian.qiskit_form, time=TIME_INTERVAL, synthesis=SuzukiTrotter())
+    unitary_circuit = QuantumCircuit(num_qubits)
+    unitary_circuit.append(evolution_gate, range(num_qubits))
 
-    qc = QuantumCircuit(num_qubits + num_ancilla_qubits, num_ancilla_qubits)
-
-    # hadamard gates for ancilla qubits
-    for i in range(num_ancilla_qubits):
-        qc.h(i)
-
-    # state preparation
-    for i, q in enumerate(qubit_state):
+    # QPE circuit
+    qpe_logic = PhaseEstimation(num_ancilla_qubits, unitary_circuit)
+    init_circuit = QuantumCircuit(num_ancilla_qubits + num_qubits)
+    for i, q in enumerate(qubit_state): # state preparation
         if q == 1:
-            qc.x(num_ancilla_qubits + i)
-    
-    # controlled time evolution operator
-    trotter_gate = SuzukiTrotter(reps=REPS)
-    evolution_op = PauliEvolutionGate(qiskit_hamiltonian, time=evolution_time, synthesis=trotter_gate)
-    controlled_evolution_op = evolution_op.control()
-    for i in range(num_ancilla_qubits):
-        t = 2 ** i
-        for _ in range(t):
-            qc.append(
-                controlled_evolution_op,
-                [i] + list(range(num_ancilla_qubits, num_qubits + num_ancilla_qubits)),
-            )
+            init_circuit.x(num_ancilla_qubits + i)
+    init_circuit.compose(qpe_logic, inplace=True)
+    init_circuit.measure_all()
 
-    # inverse quantum fourier transform
-    qft_gate = QFTGate(num_ancilla_qubits)
-    iqft_gate = qft_gate.inverse()
-    qc.append(iqft_gate, range(num_ancilla_qubits))
-
-    # measurement
-    qc.measure(range(num_ancilla_qubits), range(num_ancilla_qubits))
-
-    # decompose circuit
-    qc = qc.decompose()
-
-    # backend
-    simulator = AerSimulator()
-
-    # circuit optimization by qiskit
-    qc = transpile(qc, simulator, optimization_level=qiskit_optlevel)
+    # Transpile
+    backend = AerSimulator()
+    qc = transpile(init_circuit, backend)
 
     return qc
 
 
-def get_energy(qc: QuantumCircuit, num_ancilla_qubits: int, estimated_energy: float) -> float:
+def get_energy(qc: QuantumCircuit, num_ancilla_qubits: int) -> float:
 
-    estimated_energy = estimated_energy
-    evolution_time = np.pi / estimated_energy
+    backend = AerSimulator()
+    counts = backend.run(qc, shots=2048).result().get_counts()
+    highest_bitstring = max(counts, key=counts.get).split()[0][::-1][:num_ancilla_qubits]
+    phase = int(highest_bitstring, 2) / (2**num_ancilla_qubits)
 
-    # run by qiskit-aer simulator
-    simulator = AerSimulator()
-    job = simulator.run(qc, shots=1000)
-    result = job.result()
-
-    # evaluate the energy
-    counts = result.get_counts(qc)
-    most_common_bitstring = max(counts, key=counts.get)
-    phase = int(most_common_bitstring, 2) / (2 ** num_ancilla_qubits)
-    energy = - 2.0 * np.pi * phase / evolution_time
-
+    # e^{i 2 pi phi} = e^{-i E t} => E = - (2π * phi) / t 
+    if phase > TIME_INTERVAL:
+        phase -= 1.0
+    energy = -(phase * 2 * np.pi) / TIME_INTERVAL
     return energy
 
     
@@ -108,8 +81,7 @@ def main():
 
     basis = 'sto-3g'
     distance = 0.65
-    geometry = [('H', (0, 0, 0)),
-                ('H', (0, 0, distance))]
+    geometry = [('H', (0, 0, 0)), ('H', (0, 0, distance))]
     multiplicity = 1
     charge = 0
         
@@ -142,15 +114,13 @@ def main():
             num_ancilla_qubits = num_ancilla,
             qiskit_optlevel = qiskit_optlevel,
         )
-        depth = qc.depth()
-        #count_ops = qc.count_ops()
-        #cnot_count = count_ops.get('cx', 0)
-        #gate_count = sum(list(count_ops.values()))
-
-        return depth
+        obj = qc.depth() # depth
+        #obj = qc.count_ops().get('cx', 0) # cnot-count
+        #obj = sum(list(qc.count_ops().values())) # gate-count
+        return obj
     
     # get the quantum circuit
-    if kind in ("jordan-wigner","bravyi-kitaev","parity"):
+    if kind in ("jordan-wigner","parity","bravyi-kitaev"):
         f2q_mapper = F2QMapper(num_qubits=num_qubits, kind=kind)
         qubit_hamiltonian = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian)
         fock_state = [1 if x < num_qubits / 2 else 0 for x in range(num_qubits)]
@@ -167,7 +137,7 @@ def main():
             objective_func = objective_func,
             params = SAParams(
                 init_sampling = 10,
-                num_steps = 10,
+                num_steps = 5,
                 cooling_factor = 1.0,
             ),
             verbose = True,
@@ -186,6 +156,7 @@ def main():
         raise ValueError("kind must be jordan-wigner,bravyi-kitaev,or optimize-sa.")
     
     # result
+    print(f"kind = {kind}")
     weights = qubit_hamiltonian.pauli_weights()
     print("[pauli weight]")
     print(f"ave = {sum(weights) / len(weights)}")
@@ -202,10 +173,9 @@ def main():
     print(f"gate count = {gate_count}")
 
     if calc_energy is True:
-        estimated_energy = abs(qubit_hamiltonian.eigenvalues(num=1)[0])
         print("[ground state energy]")
         print(f"diagonalization(correct) = {qubit_hamiltonian.eigenvalues()[0]}")
-        print(f"quantum phase estimation = {get_energy(qc, num_ancilla, estimated_energy)}")
+        print(f"quantum phase estimation = {get_energy(qc, num_ancilla)}")
 
 
 if __name__ == "__main__":

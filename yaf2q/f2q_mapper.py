@@ -19,7 +19,8 @@ def _binary_inv(matrix):
     aug = np.hstack((matrix.copy() % 2, np.eye(n, dtype=int)))
     for i in range(n):
         pivot = np.where(aug[i:, i] == 1)[0]
-        if len(pivot) == 0: raise ValueError("Not invertible")
+        if len(pivot) == 0:
+            raise ValueError("Not invertible")
         pivot_idx = pivot[0] + i
         aug[[i, pivot_idx]] = aug[[pivot_idx, i]]
         for j in range(n):
