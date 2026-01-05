@@ -25,37 +25,24 @@ class QubitOperatorSet:
     openfermion_form: QubitOperator = field(default=None, init=True)
     _qiskit_form: SparsePauliOp     = field(default=None, init=False)
 
+
     @property
     def qiskit_form(self):
         """ getter of the qiskit_form """
-
+    
         if self._qiskit_form is not None:
             return self._qiskit_form
         
-        # qubit operator in qiskit format
-        qo_list = []
-        for pp, coef in self.openfermion_form.terms.items():
-            pp_dict = {}
-            for i,p in pp:
-                pp_dict[i] = p
-        
-            pp_list = []
-            for i in range(self.num_qubits):
-                if i in pp_dict:
-                    pp_list.append((i, pp_dict[i]))
-                else:
-                    pp_list.append((i, 'I'))
-        
-            pp_str = ""
-            for i, p in pp_list:
-                pp_str += p
-        
-            qo_list.append((pp_str, coef))
-        
-        qo_list_sorted = sorted(qo_list)
-        
-        self._qiskit_form = SparsePauliOp.from_list(qo_list_sorted)
-
+        pauli_dict = {}
+        for term, coeff in self.openfermion_form.terms.items():
+            label = ['I'] * self.num_qubits
+            for idx, op in term:
+                label[self.num_qubits - idx - 1] = op 
+            label_str = "".join(label)
+            pauli_dict[label_str] = coeff.real
+            
+        pauli_list_sorted = sorted(list(pauli_dict.items()))
+        self._qiskit_form = SparsePauliOp.from_list(pauli_list_sorted)
         return self._qiskit_form
 
 

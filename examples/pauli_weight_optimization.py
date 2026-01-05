@@ -67,9 +67,9 @@ def molecule_CH4():
 
 def main():
 
-    #molecule = molecule_H4()
+    molecule = molecule_H4()
     #molecule = molecule_BeH2()
-    molecule = molecule_CH4()
+    #molecule = molecule_CH4()
     #molecule = molecule_H2O()
     fermion_hamiltonian = molecule.get_molecular_hamiltonian()
     num_qubits = fermion_hamiltonian.one_body_tensor.shape[0]
