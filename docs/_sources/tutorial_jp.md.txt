@@ -92,7 +92,7 @@ fermion_hamiltonian = molecule.get_molecular_hamiltonian()
 ```python
 qubit_hamiltonian = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian)
 ```
-この`qubit_hamiltonian`は`yaf2q`の`QubitOperatorSet`クラスのインスタンスになっていて、この中に、OpenFermionで定義されている量子ビット演算子クラス（`QubitOperator`）やqiskitで定義されている量子ビット演算子クラス（`SparsePauliOp`）がメンバとして格納されています。各々`openfermion_form`および`qiskit_form`プロパティとして、以下のように取得することができます。
+この`qubit_hamiltonian`は`yaf2q`の`QubitOperatorSet`クラスのインスタンスになっていて、この中に、OpenFermionで定義されている量子ビット演算子クラス（`QubitOperator`）やqiskitで定義されている量子ビット演算子クラス（`SparsePauliOp`）やpytketで定義されている量子ビット演算子クラス（`QubitPauliOperator`）がメンバとして格納されています。各々`openfermion_form`、`qiskit_form`、および`pytket_form`プロパティとして、以下のように取得することができます。
 
 ```python
 print(qubit_hamiltonian.openfermion_form)
@@ -120,8 +120,15 @@ print(qubit_hamiltonian.qiskit_form)
 ```
 出力:
 ```
-SparsePauliOp(['IIII', 'IIZI', 'IZII', 'IZIZ', 'IZZZ', 'XZXI', 'XZXZ', 'YZYI', 'YZYZ', 'ZIII', 'ZIZI', 'ZIZZ', 'ZZII', 'ZZZI', 'ZZZZ'], 
-	coeffs=[ 0.0377511 +0.j, -0.26941693+0.j,  0.1729761 +0.j,  0.17866778+0.j, -0.26941693+0.j,  0.04407961+0.j,  0.04407961+0.j,  0.04407961+0.j, 0.04407961+0.j,  0.18601649+0.j,  0.12584137+0.j,  0.12584137+0.j, 0.18601649+0.j,  0.16992098+0.j,  0.16992098+0.j])
+SparsePauliOp(['IIII', 'IIIZ', 'IIZI', 'IIZZ', 'IXZX', 'IYZY', 'IZII', 'IZIZ', 'IZZZ', 'ZIZI', 'ZXZX', 'ZYZY', 'ZZIZ', 'ZZZI', 'ZZZZ'],
+    coeffs=[ 0.0377511 +0.j,  0.18601649+0.j,  0.1729761 +0.j,  0.18601649+0.j, 0.04407961+0.j,  0.04407961+0.j, -0.26941693+0.j,  0.12584137+0.j, 0.16992098+0.j,  0.17866778+0.j,  0.04407961+0.j,  0.04407961+0.j, 0.12584137+0.j, -0.26941693+0.j,  0.16992098+0.j])
+```
+```python
+print(qubit_hamiltonian.pytket_form)
+```
+出力:
+```
+{(Zq[0], Zq[2]): 0.125841365580063, (Zq[0], Zq[1]): 0.186016488862306, (Xq[0], Zq[1], Xq[2], Zq[3]): 0.0440796129025518, (Xq[0], Zq[1], Xq[2]): 0.0440796129025518, (Zq[0]): 0.186016488862306, (Zq[1], Zq[2], Zq[3]): -0.269416931416320, (): 0.0377511039464552, (Zq[2]): -0.269416931416320, (Zq[0], Zq[1], Zq[2], Zq[3]): 0.169920978482615, (Yq[0], Zq[1], Yq[2], Zq[3]): 0.0440796129025518, (Zq[0], Zq[2], Zq[3]): 0.125841365580063, (Zq[1], Zq[3]): 0.178667777759534, (Yq[0], Zq[1], Yq[2]): 0.0440796129025518, (Zq[0], Zq[1], Zq[2]): 0.169920978482615, (Zq[1]): 0.172976101307451}
 ```
 `QubitOperatorSet`クラスには、固有値や固有ベクトルを求めるメソッドが定義されています。`eigenvalues()`メソッドの引数`num`に指定された数の固有値を小さいものから`num`個並んだリストとして得ることができます。
 

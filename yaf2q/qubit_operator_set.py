@@ -4,6 +4,9 @@ from scipy.sparse.linalg import eigsh
 from openfermion.linalg import qubit_operator_sparse
 from openfermion.ops.operators.qubit_operator import QubitOperator
 from qiskit.quantum_info import SparsePauliOp
+from pytket import Qubit
+from pytket.pauli import Pauli, QubitPauliString
+from pytket.utils import QubitPauliOperator
 
 
 @dataclass
@@ -17,13 +20,16 @@ class QubitOperatorSet:
         number of qubits
     openfermion_form : QubitOperator
         qubit operator in openfermion format
-    qiskit_form :
+    qiskit_form : SparsePauliOp
         qubit operator in qiskit format
+    pytket_form : QubitPauliOperator
+        qubit operator in pytket format
 
     """
-    num_qubits: int                 = field(default=0, init=True)
-    openfermion_form: QubitOperator = field(default=None, init=True)
-    _qiskit_form: SparsePauliOp     = field(default=None, init=False)
+    num_qubits: int                  = field(default=0, init=True)
+    openfermion_form: QubitOperator  = field(default=None, init=True)
+    _qiskit_form: SparsePauliOp      = field(default=None, init=False)
+    _pytket_form: QubitPauliOperator = field(default=None, init=False)
 
 
     @property
@@ -44,6 +50,25 @@ class QubitOperatorSet:
         pauli_list_sorted = sorted(list(pauli_dict.items()))
         self._qiskit_form = SparsePauliOp.from_list(pauli_list_sorted)
         return self._qiskit_form
+
+
+    @property
+    def pytket_form(self):
+        """ getter of the pytket_form """
+
+        tk_dict = {}
+        for term, coeff in self.openfermion_form.terms.items():
+            pauli_map = {}
+            for qubit_idx, op_str in term:
+                # qubit_idx: index of qubit, op_str: 'X', 'Y', 'Z'
+                pauli_map[Qubit(qubit_idx)] = Pauli.__members__[op_str]
+
+            # pytket form
+            pauli_string = QubitPauliString(pauli_map)
+            tk_dict[pauli_string] = coeff
+
+        self._pytket_form = QubitPauliOperator(tk_dict)
+        return self._pytket_form
 
 
     def __str__(self) -> str:

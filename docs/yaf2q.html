@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>yaf2q package &mdash; yaf2q 0.1.0 documentation</title>
+  <title>yaf2q package &mdash; yaf2q 0.1.4 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/documentation_options.js?v=fd825880"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -78,13 +78,15 @@
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.num_qubits"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.openfermion_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.qiskit_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.pytket_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.pytket_form</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigenvalues"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigenvalues()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigenvectors"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigenvectors()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.eigsh"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigsh()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id5"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id6"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.pauli_weights"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.pauli_weights()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.pytket_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.qubit_operator_set.QubitOperatorSet.to_string"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.to_string()</span></code></a></li>
 </ul>
 </li>
@@ -98,10 +100,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec._parent_dict"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec._parent_dict</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec._mask"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec._mask</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.change_parent"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.change_parent()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.edges</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.indices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.indices</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.is_valid"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.is_valid()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.num_qubits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.random"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.random()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.show"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.show()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.ternary_tree_spec.TernaryTreeSpec.swap_indices"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.swap_indices()</span></code></a></li>
@@ -117,28 +119,30 @@
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.ttspec"><code class="docutils literal notranslate"><span class="pre">F2QMapper.ttspec</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.encoding_matrix"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.encoding_matrix_inv"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix_inv</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix_inv</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">F2QMapper.encoding_matrix_inv</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.fermion_to_qubit_operator"><code class="docutils literal notranslate"><span class="pre">F2QMapper.fermion_to_qubit_operator()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.fock_to_qubit_state"><code class="docutils literal notranslate"><span class="pre">F2QMapper.fock_to_qubit_state()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13"><code class="docutils literal notranslate"><span class="pre">F2QMapper.kind</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">F2QMapper.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14"><code class="docutils literal notranslate"><span class="pre">F2QMapper.kind</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">F2QMapper.num_qubits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.qubit_to_fock_state"><code class="docutils literal notranslate"><span class="pre">F2QMapper.qubit_to_fock_state()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.F2QMapper.to_string"><code class="docutils literal notranslate"><span class="pre">F2QMapper.to_string()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id15"><code class="docutils literal notranslate"><span class="pre">F2QMapper.ttspec</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">F2QMapper.ttspec</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#yaf2q.QubitOperatorSet"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet</span></code></a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.num_qubits"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.openfermion_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.qiskit_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.pytket_form"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.pytket_form</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.eigenvalues"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigenvalues()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.eigenvectors"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigenvectors()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.eigsh"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.eigsh()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id16"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.openfermion_form</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.pauli_weights"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.pauli_weights()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id18"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.pytket_form</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.qiskit_form</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.QubitOperatorSet.to_string"><code class="docutils literal notranslate"><span class="pre">QubitOperatorSet.to_string()</span></code></a></li>
 </ul>
 </li>
@@ -149,10 +153,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec._parent_dict"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec._parent_dict</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec._mask"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec._mask</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.change_parent"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.change_parent()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id19"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.edges</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id20"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.indices</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.edges</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.indices</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.is_valid"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.is_valid()</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id21"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.num_qubits</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id23"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.num_qubits</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.random"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.random()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.show"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.show()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#yaf2q.TernaryTreeSpec.swap_indices"><code class="docutils literal notranslate"><span class="pre">TernaryTreeSpec.swap_indices()</span></code></a></li>
@@ -427,6 +431,22 @@
 <dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.qiskit_form">
 <span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.qiskit_form" title="Link to this definition"></a></dt>
 <dd><p>qubit operator in qiskit format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SparsePauliOp</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.qubit_operator_set.QubitOperatorSet.pytket_form">
+<span class="sig-name descname"><span class="pre">pytket_form</span></span><a class="headerlink" href="#yaf2q.qubit_operator_set.QubitOperatorSet.pytket_form" title="Link to this definition"></a></dt>
+<dd><p>qubit operator in pytket format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QubitPauliOperator</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -511,7 +531,13 @@
 
 <dl class="py property">
 <dt class="sig sig-object py" id="id7">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pytket_form</span></span><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd><p>getter of the pytket_form</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id8">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
 <dd><p>getter of the qiskit_form</p>
 </dd></dl>
 
@@ -619,8 +645,8 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id8">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id8" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id9">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
 <dd><p>Get the edges of the TernaryTreeSpec</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -635,8 +661,8 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id9">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id9" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id10">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
 <dd><p>Get the indices</p>
 </dd></dl>
 
@@ -658,8 +684,8 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id10">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id10" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id11">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
 <dd><p>Get the number of qubits</p>
 </dd></dl>
 
@@ -794,14 +820,14 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id11">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id11" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id12">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding_matrix</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
 <dd><p>getter of the encoding_matrix</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id12">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding_matrix_inv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id12" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id13">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding_matrix_inv</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ndarray</span></em><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
 <dd><p>getter of the encoding_matrix_inv</p>
 </dd></dl>
 
@@ -840,14 +866,14 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id13">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id13" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id14">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">kind</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">str</span></em><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
 <dd><p>getter of the kind</p>
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id14">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id14" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id15">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
 <dd><p>getter of the num_qubits</p>
 </dd></dl>
 
@@ -886,8 +912,8 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id15">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ttspec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id15" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id16">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">ttspec</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
 <dd><p>getter of the ttspec</p>
 </dd></dl>
 
@@ -924,6 +950,22 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 <dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.qiskit_form">
 <span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.qiskit_form" title="Link to this definition"></a></dt>
 <dd><p>qubit operator in qiskit format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>SparsePauliOp</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="yaf2q.QubitOperatorSet.pytket_form">
+<span class="sig-name descname"><span class="pre">pytket_form</span></span><a class="headerlink" href="#yaf2q.QubitOperatorSet.pytket_form" title="Link to this definition"></a></dt>
+<dd><p>qubit operator in pytket format</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>QubitPauliOperator</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -978,13 +1020,13 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id16">
-<span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#id16" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id17">
+<span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#id17" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="id17">
-<span class="sig-name descname"><span class="pre">openfermion_form</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">QubitOperator</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id17" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id18">
+<span class="sig-name descname"><span class="pre">openfermion_form</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">QubitOperator</span></em><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#id18" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -1007,8 +1049,14 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id18">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#id18" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id19">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pytket_form</span></span><a class="headerlink" href="#id19" title="Link to this definition"></a></dt>
+<dd><p>getter of the pytket_form</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="id20">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qiskit_form</span></span><a class="headerlink" href="#id20" title="Link to this definition"></a></dt>
 <dd><p>getter of the qiskit_form</p>
 </dd></dl>
 
@@ -1113,8 +1161,8 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id19">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id19" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id21">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">edges</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#id21" title="Link to this definition"></a></dt>
 <dd><p>Get the edges of the TernaryTreeSpec</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1129,8 +1177,8 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id20">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id20" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id22">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">indices</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id22" title="Link to this definition"></a></dt>
 <dd><p>Get the indices</p>
 </dd></dl>
 
@@ -1152,8 +1200,8 @@ plus the Pauli operator index. Pauli operator index is defined as X=&gt;0,Y=&gt;
 </dd></dl>
 
 <dl class="py property">
-<dt class="sig sig-object py" id="id21">
-<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id21" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="id23">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">num_qubits</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#id23" title="Link to this definition"></a></dt>
 <dd><p>Get the number of qubits</p>
 </dd></dl>
 
