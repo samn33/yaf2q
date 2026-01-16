@@ -21,4 +21,5 @@ dependencies = [
     "pydot",
     "matplotlib",
     "networkx",
+    "pytket",
 ]

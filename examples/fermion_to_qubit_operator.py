@@ -66,6 +66,10 @@ def main():
     # qubit hamiltonian
     qubit_hamiltonian = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian)
 
+    print(qubit_hamiltonian.openfermion_form)
+    print(qubit_hamiltonian.qiskit_form)
+    print(qubit_hamiltonian.pytket_form)
+
     # fock state to qubit state
     fock_state = [1 if x < num_qubits / 2 else 0 for x in range(num_qubits)]
     qubit_state = f2q_mapper.fock_to_qubit_state(fock_state)

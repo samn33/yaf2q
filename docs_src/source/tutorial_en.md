@@ -94,7 +94,7 @@ You can then obtain the qubit operator by passing this `fermion_hamiltonian` to 
 ```python
 qubit_hamiltonian = f2q_mapper.fermion_to_qubit_operator(fermion_hamiltonian)
 ```
-The `qubit_hamiltonian` is an instance of `yaf2q`'s `QubitOperatorSet` class, which stores OpenFermion `QubitOperator` or qiskit `SparsePauliOp` objects. These can be accessed via the `openfermion_form` and `qiskit_form` properties, respectively:
+The `qubit_hamiltonian` is an instance of `yaf2q`'s `QubitOperatorSet` class, which stores OpenFermion `QubitOperator` , qiskit `SparsePauliOp` or pytket `QubitPauliOperator` objects. These can be accessed via the `openfermion_form`, `qiskit_form` and `pytket_form` properties, respectively:
 
 ```python
 print(qubit_hamiltonian.openfermion_form)
@@ -122,8 +122,15 @@ print(qubit_hamiltonian.qiskit_form)
 ```
 Output:
 ```
-SparsePauliOp(['IIII', 'IIZI', 'IZII', 'IZIZ', 'IZZZ', 'XZXI', 'XZXZ', 'YZYI', 'YZYZ', 'ZIII', 'ZIZI', 'ZIZZ', 'ZZII', 'ZZZI', 'ZZZZ'], 
-	coeffs=[ 0.0377511 +0.j, -0.26941693+0.j,  0.1729761 +0.j,  0.17866778+0.j, -0.26941693+0.j,  0.04407961+0.j,  0.04407961+0.j,  0.04407961+0.j, 0.04407961+0.j,  0.18601649+0.j,  0.12584137+0.j,  0.12584137+0.j, 0.18601649+0.j,  0.16992098+0.j,  0.16992098+0.j])
+SparsePauliOp(['IIII', 'IIIZ', 'IIZI', 'IIZZ', 'IXZX', 'IYZY', 'IZII', 'IZIZ', 'IZZZ', 'ZIZI', 'ZXZX', 'ZYZY', 'ZZIZ', 'ZZZI', 'ZZZZ'],
+    coeffs=[ 0.0377511 +0.j,  0.18601649+0.j,  0.1729761 +0.j,  0.18601649+0.j, 0.04407961+0.j,  0.04407961+0.j, -0.26941693+0.j,  0.12584137+0.j, 0.16992098+0.j,  0.17866778+0.j,  0.04407961+0.j,  0.04407961+0.j, 0.12584137+0.j, -0.26941693+0.j,  0.16992098+0.j])
+```
+```python
+print(qubit_hamiltonian.pytket_form)
+```
+Output:
+```
+{(Zq[0], Zq[2]): 0.125841365580063, (Zq[0], Zq[1]): 0.186016488862306, (Xq[0], Zq[1], Xq[2], Zq[3]): 0.0440796129025518, (Xq[0], Zq[1], Xq[2]): 0.0440796129025518, (Zq[0]): 0.186016488862306, (Zq[1], Zq[2], Zq[3]): -0.269416931416320, (): 0.0377511039464552, (Zq[2]): -0.269416931416320, (Zq[0], Zq[1], Zq[2], Zq[3]): 0.169920978482615, (Yq[0], Zq[1], Yq[2], Zq[3]): 0.0440796129025518, (Zq[0], Zq[2], Zq[3]): 0.125841365580063, (Zq[1], Zq[3]): 0.178667777759534, (Yq[0], Zq[1], Yq[2]): 0.0440796129025518, (Zq[0], Zq[1], Zq[2]): 0.169920978482615, (Zq[1]): 0.172976101307451}
 ```
 The `QubitOperatorSet` class also has methods for calculating eigenvalues and eigenvectors. The `eigenvalues()` method returns a list of the `num` smallest eigenvalues:
 

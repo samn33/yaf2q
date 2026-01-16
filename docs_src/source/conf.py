@@ -9,7 +9,7 @@
 project = 'yaf2q'
 copyright = '2025, Sam.N'
 author = 'Sam.N'
-release = '0.1.0'
+release = '0.1.4'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
